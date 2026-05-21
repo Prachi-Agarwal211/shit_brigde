@@ -73,7 +73,7 @@ export default function FranchisePage() {
           className="text-[clamp(3.5rem,8vw,7rem)] font-black leading-[0.95] tracking-tighter mb-8 font-display relative z-10" 
         />
         <p className="text-lg md:text-xl text-white/60 max-w-2xl font-light leading-relaxed relative z-10">
-          Join a global network of logistics entrepreneurs powered by AI infrastructure and 20 years of supply chain expertise.
+          Own a delivery franchise in your city. We provide the AI-powered technology platform, courier network access, training, and support. You run the operations.
         </p>
       </section>
 
@@ -82,8 +82,8 @@ export default function FranchisePage() {
         <SectionAurora variant="dual" className="opacity-30" />
         <div className="max-w-7xl mx-auto benefits-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 relative z-10">
           {[
-            { title: "Proven Model", icon: <CheckIcon />, desc: "200+ active franchise locations globally with proven ROI." },
-            { title: "Full Tech Stack", icon: <TechIcon />, desc: "Access to ShipBridge OS ERP platform from day one." },
+            { title: "Proven Model", icon: <CheckIcon />, desc: "Scalable franchise model designed for Indian logistics — from metro cities to tier-2 and tier-3 towns." },
+            { title: "Full Tech Stack", icon: <TechIcon />, desc: "Access to the ShipBridge AI-powered shipping platform, dashboard, and courier network from day one." },
             { title: "Training & Support", icon: <BookIcon />, desc: "8-week onboarding + dedicated account manager." },
             { title: "Territory Protection", icon: <MapIcon />, desc: "Exclusive geographic zones for your operations." },
             { title: "Marketing Assets", icon: <SpeakerIcon />, desc: "Full brand kit and managed digital campaigns." },
@@ -135,22 +135,36 @@ export default function FranchisePage() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-widest text-white/40">Phone</label>
-                    <input required type="tel" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="+1 (555) 000-0000" />
+                    <input required type="tel" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="+91 XXXXX XXXXX" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-widest text-white/40">City / Country</label>
-                    <input required type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="London, UK" />
+                    <label className="text-xs uppercase tracking-widest text-white/40">City / State</label>
+                    <input required type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="Mumbai, Maharashtra" />
                   </div>
                 </div>
 
                 <div className="space-y-2">
                   <label className="text-xs uppercase tracking-widest text-white/40">Company Name</label>
-                  <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="Doe Logistics Ltd (Optional)" />
+                  <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="Doe Logistics Pvt Ltd (Optional)" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs uppercase tracking-widest text-white/40">GST Number (Optional)</label>
+                  <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="22AAAAA0000A1Z5" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs uppercase tracking-widest text-white/40">Business Type</label>
+                  <select className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#00ff87]/50 transition-colors appearance-none">
+                    <option value="" className="bg-[#0a0a0a]">Select business type...</option>
+                    <option value="individual" className="bg-[#0a0a0a]">Individual / Sole Proprietor</option>
+                    <option value="partnership" className="bg-[#0a0a0a]">Partnership</option>
+                    <option value="pvt-ltd" className="bg-[#0a0a0a]">Private Limited</option>
+                    <option value="llp" className="bg-[#0a0a0a]">LLP</option>
+                  </select>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-widest text-white/40">Years in Logistics</label>
+                    <label className="text-xs uppercase tracking-widest text-white/40">Years in Logistics (India)</label>
                     <select required className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#00ff87]/50 transition-colors appearance-none">
                       <option value="" className="bg-[#0a0a0a]">Select experience...</option>
                       <option value="<1" className="bg-[#0a0a0a]">&lt; 1 Year</option>
@@ -163,9 +177,10 @@ export default function FranchisePage() {
                     <label className="text-xs uppercase tracking-widest text-white/40">Investment Capacity</label>
                     <select required className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#00ff87]/50 transition-colors appearance-none">
                       <option value="" className="bg-[#0a0a0a]">Select capacity...</option>
-                      <option value="50-100" className="bg-[#0a0a0a]">$50K - $100K</option>
-                      <option value="100-250" className="bg-[#0a0a0a]">$100K - $250K</option>
-                      <option value="250+" className="bg-[#0a0a0a]">$250K+</option>
+                      <option value="5-10" className="bg-[#0a0a0a]">₹5L - ₹10L</option>
+                      <option value="10-25" className="bg-[#0a0a0a]">₹10L - ₹25L</option>
+                      <option value="25-50" className="bg-[#0a0a0a]">₹25L - ₹50L</option>
+                      <option value="50+" className="bg-[#0a0a0a]">₹50L+</option>
                     </select>
                   </div>
                 </div>

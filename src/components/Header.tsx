@@ -98,20 +98,32 @@ export default function Header() {
               </Link>
             </div>
             <div className="chromatic-ring rounded-full px-3 py-1">
-              <Link href="/#services" className="nav-link text-white/60 hover:text-white transition-all text-[10px] tracking-[0.15em] uppercase relative group">
-                Services
+              <Link href="/how-it-works" className="nav-link text-white/60 hover:text-white transition-all text-[10px] tracking-[0.15em] uppercase relative group">
+                How It Works
                 <div className="absolute -bottom-2 left-0 h-px bg-gradient-to-r from-transparent via-[#00ff87]/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-500" />
               </Link>
             </div>
             <div className="chromatic-ring rounded-full px-3 py-1">
-              <Link href="/about" className="nav-link text-white/60 hover:text-white transition-all text-[10px] tracking-[0.15em] uppercase relative group">
+              <Link href="/integrations" className="nav-link text-white/60 hover:text-white transition-all text-[10px] tracking-[0.15em] uppercase relative group">
+                Integrations
+                <div className="absolute -bottom-2 left-0 h-px bg-gradient-to-r from-transparent via-[#00ff87]/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-500" />
+              </Link>
+            </div>
+            <div className="chromatic-ring rounded-full px-3 py-1">
+              <Link href="/faq" className="nav-link text-white/60 hover:text-white transition-all text-[10px] tracking-[0.15em] uppercase relative group">
+                FAQ
+                <div className="absolute -bottom-2 left-0 h-px bg-gradient-to-r from-transparent via-[#00ff87]/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-500" />
+              </Link>
+            </div>
+            <div className="chromatic-ring rounded-full px-3 py-1">
+              <Link href="/pricing" className="nav-link text-white/60 hover:text-white transition-all text-[10px] tracking-[0.15em] uppercase relative group">
+                Pricing
+                <div className="absolute -bottom-2 left-0 h-px bg-gradient-to-r from-transparent via-[#00ff87]/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-500" />
+              </Link>
+            </div>
+            <div className="chromatic-ring rounded-full px-3 py-1">
+              <Link href="/about" className="nav-link text-white/70 hover:text-[#00ff87] transition-all text-[10px] tracking-[0.15em] uppercase font-medium relative group">
                 About
-                <div className="absolute -bottom-2 left-0 h-px bg-gradient-to-r from-transparent via-[#00ff87]/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-500" />
-              </Link>
-            </div>
-            <div className="chromatic-ring rounded-full px-3 py-1">
-              <Link href="/franchise" className="nav-link text-white/70 hover:text-[#00ff87] transition-all text-[10px] tracking-[0.15em] uppercase font-medium relative group">
-                Franchise
                 <div className="absolute -bottom-2 left-0 h-px bg-gradient-to-r from-transparent via-[#00ff87]/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-500" />
               </Link>
             </div>
@@ -149,13 +161,28 @@ export default function Header() {
             </Link>
           </div>
           <div className="prismatic-dot">
-            <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
-              About
+            <Link href="/how-it-works" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
+              How It Works
             </Link>
           </div>
           <div className="prismatic-dot">
-            <Link href="/franchise" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
-              Franchise
+            <Link href="/integrations" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
+              Integrations
+            </Link>
+          </div>
+          <div className="prismatic-dot">
+            <Link href="/faq" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
+              FAQ
+            </Link>
+          </div>
+          <div className="prismatic-dot">
+            <Link href="/pricing" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
+              Pricing
+            </Link>
+          </div>
+          <div className="prismatic-dot">
+            <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
+              About
             </Link>
           </div>
           <div className="prismatic-dot">

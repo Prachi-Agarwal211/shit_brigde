@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__web-search-prime__web_search_prime",
+      "WebFetch(domain:www.shiprocket.in)",
+      "WebFetch(domain:www.delhivery.com)",
+      "Bash(npx next:*)",
+      "Bash(find C:Users15anuOneDrive文档codeshipbridgesrc -name *.tsx -o -name *.ts)"
+    ]
+  }
+}

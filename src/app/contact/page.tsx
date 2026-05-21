@@ -32,7 +32,7 @@ export default function ContactPage() {
             <section className="order-2 lg:order-1">
               <h2 className="text-3xl font-bold mb-6 font-display">Get in Touch</h2>
               <p className="text-white/60 leading-relaxed mb-12 max-w-md">
-                Ready to transform your logistics? Reach out to our team for a personalized consultation. We operate remotely across the globe.
+                Ready to simplify your shipping? Reach out to our team for a personalised consultation. Our team is available during Indian business hours to help you ship smarter.
               </p>
               
               <div className="space-y-8 mb-16">
@@ -51,7 +51,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-[10px] text-white/40 uppercase tracking-widest mb-1">Phone</p>
-                    <a href="tel:+18007447273" className="text-xl text-white hover:text-[#00ff87] transition-colors">+1 (800) SHIP-BRD</a>
+                    <a href="tel:+911800XXX123" className="text-xl text-white hover:text-[#00ff87] transition-colors">1800-XXX-123</a>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
@@ -60,35 +60,37 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-[10px] text-white/40 uppercase tracking-widest mb-1">Location</p>
-                    <p className="text-xl text-white leading-snug">Remote-first, globally distributed<br />Operating in 50+ countries</p>
+                    <p className="text-xl text-white leading-snug">India-based operations<br />Serving D2C brands, SMEs and sellers across India</p>
                   </div>
                 </div>
               </div>
 
-              {/* Global Network Visual */}
+              {/* India Map Visual */}
               <div className="rounded-2xl bg-[#0f1a14] border border-[#00ff87]/20 h-[300px] w-full flex flex-col items-center justify-center relative overflow-hidden group">
                 <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,135,0.05),transparent_70%)]" />
-                {/* Decorative dot grid map */}
+                {/* Decorative dot grid */}
                 <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+PHBhdGggZD0iTTAgMGg2MHY2MEgweiIgZmlsbD0ibm9uZSIvPjxjaXJjbGUgY3g9IjMwIiBjeT0iMzAiIHI9IjEuNSIgZmlsbD0icmdiYSgwLDI1NSwxMzUsMC4yKSIvPjwvc3ZnPg==')] opacity-40" />
-                {/* Animated connection dots */}
+                {/* Animated connection dots representing Indian cities */}
                 <div className="absolute w-full h-full">
-                  <div className="absolute top-[30%] left-[20%] w-2 h-2 rounded-full bg-[#00ff87] animate-pulse shadow-[0_0_10px_rgba(0,255,135,0.6)]" />
-                  <div className="absolute top-[50%] left-[45%] w-2 h-2 rounded-full bg-[#00ff87]/60 animate-pulse shadow-[0_0_10px_rgba(0,255,135,0.4)]" style={{animationDelay: '0.5s'}} />
-                  <div className="absolute top-[40%] left-[70%] w-2 h-2 rounded-full bg-[#f97316] animate-pulse shadow-[0_0_10px_rgba(249,115,22,0.6)]" style={{animationDelay: '1s'}} />
-                  <div className="absolute top-[60%] left-[80%] w-2 h-2 rounded-full bg-[#00ff87] animate-pulse shadow-[0_0_10px_rgba(0,255,135,0.6)]" style={{animationDelay: '0.3s'}} />
-                  <div className="absolute top-[35%] left-[55%] w-2 h-2 rounded-full bg-[#f97316]/60 animate-pulse shadow-[0_0_10px_rgba(249,115,22,0.4)]" style={{animationDelay: '0.8s'}} />
+                  <div className="absolute top-[25%] left-[45%] w-2 h-2 rounded-full bg-[#00ff87] animate-pulse shadow-[0_0_10px_rgba(0,255,135,0.6)]" />
+                  <div className="absolute top-[50%] left-[50%] w-2 h-2 rounded-full bg-[#00ff87]/60 animate-pulse shadow-[0_0_10px_rgba(0,255,135,0.4)]" style={{animationDelay: '0.5s'}} />
+                  <div className="absolute top-[65%] left-[55%] w-2 h-2 rounded-full bg-[#f97316] animate-pulse shadow-[0_0_10px_rgba(249,115,22,0.6)]" style={{animationDelay: '1s'}} />
+                  <div className="absolute top-[40%] left-[60%] w-2 h-2 rounded-full bg-[#00ff87] animate-pulse shadow-[0_0_10px_rgba(0,255,135,0.6)]" style={{animationDelay: '0.3s'}} />
+                  <div className="absolute top-[55%] left-[35%] w-2 h-2 rounded-full bg-[#f97316]/60 animate-pulse shadow-[0_0_10px_rgba(249,115,22,0.4)]" style={{animationDelay: '0.8s'}} />
+                  <div className="absolute top-[70%] left-[45%] w-2 h-2 rounded-full bg-[#00ff87]/60 animate-pulse shadow-[0_0_10px_rgba(0,255,135,0.4)]" style={{animationDelay: '1.2s'}} />
                 </div>
                 {/* Connection lines */}
                 <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 400 300" fill="none">
-                  <line x1="80" y1="90" x2="180" y2="150" stroke="#00ff87" strokeWidth="0.5" strokeDasharray="4 4" />
-                  <line x1="180" y1="150" x2="280" y2="120" stroke="#00ff87" strokeWidth="0.5" strokeDasharray="4 4" />
-                  <line x1="280" y1="120" x2="320" y2="180" stroke="#f97316" strokeWidth="0.5" strokeDasharray="4 4" />
-                  <line x1="80" y1="90" x2="220" y2="180" stroke="#00ff87" strokeWidth="0.3" strokeDasharray="3 6" />
-                  <line x1="220" y1="180" x2="320" y2="180" stroke="#f97316" strokeWidth="0.3" strokeDasharray="3 6" />
+                  <line x1="180" y1="75" x2="200" y2="150" stroke="#00ff87" strokeWidth="0.5" strokeDasharray="4 4" />
+                  <line x1="200" y1="150" x2="220" y2="195" stroke="#00ff87" strokeWidth="0.5" strokeDasharray="4 4" />
+                  <line x1="220" y1="195" x2="240" y2="160" stroke="#f97316" strokeWidth="0.5" strokeDasharray="4 4" />
+                  <line x1="180" y1="75" x2="140" y2="165" stroke="#00ff87" strokeWidth="0.3" strokeDasharray="3 6" />
+                  <line x1="140" y1="165" x2="200" y2="210" stroke="#00ff87" strokeWidth="0.3" strokeDasharray="3 6" />
+                  <line x1="200" y1="210" x2="180" y2="150" stroke="#f97316" strokeWidth="0.3" strokeDasharray="3 6" />
                 </svg>
                 <div className="relative z-10 text-center">
-                  <span className="text-[#00ff87] font-display text-xl font-bold tracking-wide">Global Network</span>
-                  <span className="block text-white/40 text-xs font-mono mt-2">50+ Countries · AI-Routed</span>
+                  <span className="text-[#00ff87] font-display text-xl font-bold tracking-wide">Pan-India Coverage</span>
+                  <span className="block text-white/40 text-xs font-mono mt-2">Multi-Courier · AI-Routed · PAN India</span>
                 </div>
               </div>
             </section>

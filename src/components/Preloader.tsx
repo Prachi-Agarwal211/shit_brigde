@@ -7,33 +7,42 @@ export default function Preloader() {
   const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Skip if already visited this session
+    if (typeof window !== "undefined" && sessionStorage.getItem("shipbridge-loaded")) {
+      setLoading(false);
+      return;
+    }
+
     // Animate in the text on mount
     if (textRef.current) {
       gsap.fromTo(
         textRef.current.children,
         { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power3.out" }
+        { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: "power3.out" }
       );
     }
 
-    // Delay then exit
+    // Shorter delay then exit
     const timeout = setTimeout(() => {
       const tl = gsap.timeline({
-        onComplete: () => setLoading(false),
+        onComplete: () => {
+          sessionStorage.setItem("shipbridge-loaded", "true");
+          setLoading(false);
+        },
       });
 
       tl.to(textRef.current, {
         opacity: 0,
         y: -20,
-        duration: 0.5,
+        duration: 0.4,
         ease: "power2.in",
       })
       .to(".preloader-bg", {
         y: "-100%",
-        duration: 1,
+        duration: 0.8,
         ease: "power4.inOut",
-      }, "+=0.2");
-    }, 1200);
+      }, "+=0.1");
+    }, 800);
 
     return () => clearTimeout(timeout);
   }, []);

@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
-import SmoothScroll from "@/components/SmoothScroll";
 import Preloader from "@/components/Preloader";
 import BackgroundPaperShaders from "@/components/BackgroundPaperShaders";
 
@@ -17,12 +16,31 @@ const interTight = Inter_Tight({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://shipbridge.com"),
-  title: "ShipBridge — Global Logistics Solutions",
-  description: "Bridging the gap in global logistics with seamless, reliable, and efficient shipping solutions. Express delivery, warehousing, and customs clearance.",
+  title: "ShipBridge — Pan-India AI Shipping & Logistics Platform",
+  description: "ShipBridge helps Indian D2C brands, SMEs and marketplace sellers ship smarter with AI-powered multi-courier automation, COD management, real-time tracking, returns, and NDR handling. Built for India.",
+  keywords: [
+    "logistics software India",
+    "AI shipping platform India",
+    "pan-India shipping",
+    "courier aggregator India",
+    "D2C shipping India",
+    "COD shipping India",
+    "ecommerce shipping platform",
+    "multi-courier shipping software",
+    "Shopify shipping India",
+    "shipment tracking India",
+    "logistics platform for SMEs",
+    "RTO management India",
+    "NDR management ecommerce",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+  },
   // Open Graph for social sharing
   openGraph: {
-    title: "ShipBridge — Global Logistics Solutions",
-    description: "Bridging the gap in global logistics with seamless, reliable, and efficient shipping solutions.",
+    title: "ShipBridge — Pan-India AI Shipping & Logistics Platform",
+    description: "AI-powered shipping platform for Indian D2C brands, SMEs and marketplace sellers. Multi-courier automation, COD, real-time tracking, returns management.",
     type: "website",
     url: "https://shipbridge.com",
     siteName: "ShipBridge",
@@ -31,15 +49,15 @@ export const metadata: Metadata = {
         url: "/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "ShipBridge Logistics",
+        alt: "ShipBridge — AI Shipping Platform for India",
       },
     ],
   },
   // Twitter Card
   twitter: {
     card: "summary_large_image",
-    title: "ShipBridge — Global Logistics Solutions",
-    description: "Bridging the gap in global logistics with seamless, reliable, and efficient shipping solutions.",
+    title: "ShipBridge — Pan-India AI Shipping & Logistics Platform",
+    description: "AI-powered shipping platform for Indian D2C brands, SMEs and marketplace sellers. Multi-courier automation, COD, real-time tracking, returns management.",
     images: ["/og-image.svg"],
   },
   // Icons (optional)
@@ -55,6 +73,27 @@ export const viewport: Viewport = {
   themeColor: "#000000",
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "ShipBridge",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  description:
+    "AI-powered shipping and logistics platform for Indian D2C brands, SMEs, and marketplace sellers. Multi-courier automation, COD management, real-time tracking, and returns management.",
+  url: "https://shipbridge.com",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "INR",
+  },
+  author: {
+    "@type": "Organization",
+    name: "ShipBridge Technologies Pvt Ltd",
+    url: "https://shipbridge.com",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -62,13 +101,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${interTight.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="antialiased bg-[#030303] min-h-screen font-sans">
         <BackgroundPaperShaders />
         <Preloader />
-        <SmoothScroll>
-          <Header />
-          {children}
-        </SmoothScroll>
+        <Header />
+        {children}
       </body>
     </html>
   );

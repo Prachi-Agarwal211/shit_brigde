@@ -18,30 +18,24 @@ export default function DashboardMockup() {
       { threshold: 0.3 }
     );
     if (cardRef.current) observer.observe(cardRef.current);
-    
-    // Mouse tracking for reflection
-    const onMouseMove = (e: MouseEvent) => {
-      if (!cardRef.current || !glareRef.current) return;
-      const rect = cardRef.current.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      const px = (x / rect.width) * 100;
-      const py = (y / rect.height) * 100;
-      
-      glareRef.current.style.setProperty('--x', `${px}%`);
-      glareRef.current.style.setProperty('--y', `${py}%`);
-    };
 
-    window.addEventListener("mousemove", onMouseMove);
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("mousemove", onMouseMove);
-    };
+    return () => observer.disconnect();
   }, []);
 
+  // Mouse tracking for reflection — only tracks when inside the card
+  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current || !glareRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const px = (x / rect.width) * 100;
+    const py = (y / rect.height) * 100;
+    glareRef.current.style.setProperty('--x', `${px}%`);
+    glareRef.current.style.setProperty('--y', `${py}%`);
+  };
+
   return (
-    <div ref={cardRef} className="card-glow-brand p-6 md:p-8 w-full max-w-xl mx-auto lg:mx-0 relative overflow-hidden group">
+    <div ref={cardRef} onMouseMove={onMouseMove} className="card-glow-brand p-6 md:p-8 w-full max-w-xl mx-auto lg:mx-0 relative overflow-hidden group">
       {/* Moving Glass Reflection */}
       <div 
         ref={glareRef}
@@ -58,7 +52,7 @@ export default function DashboardMockup() {
           <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
           <div className="w-3 h-3 rounded-full bg-[#28c840]" />
         </div>
-        <span className="text-xs text-white/30 tracking-widest ml-2 uppercase">ShipBridge OS · Beta</span>
+        <span className="text-xs text-white/30 tracking-widest ml-2 uppercase">ShipBridge · Live Dashboard</span>
         <div className="ml-auto flex items-center gap-1.5">
           <div className="w-1.5 h-1.5 rounded-full bg-[#00ff87] animate-pulse" />
           <span className="text-[10px] text-[#00ff87]">Live</span>
@@ -70,7 +64,7 @@ export default function DashboardMockup() {
         {[
           { label: "AI Route Efficiency", value: "94%", width: "0.94" },
           { label: "On-time Delivery", value: "99.2%", width: "0.992" },
-          { label: "Customs Clearance", value: "87%", width: "0.87" },
+          { label: "COD Orders Automated", value: "91%", width: "0.91" },
         ].map((metric, i) => (
           <div key={i}>
             <div className="flex justify-between mb-1.5">
@@ -90,7 +84,7 @@ export default function DashboardMockup() {
       {/* Sparkline SVG */}
       <div className="bg-white/2 rounded-xl p-4 mb-4 border border-white/5">
         <div className="flex justify-between items-center mb-3">
-          <span className="text-[10px] text-white/40 uppercase tracking-wider">Route Efficiency</span>
+          <span className="text-[10px] text-white/40 uppercase tracking-wider">Shipments Processed</span>
           <span className="text-[10px] text-[#00ff87] font-mono">↑ 12.4%</span>
         </div>
         <svg viewBox="0 0 200 50" className="w-full h-12">

@@ -1,13 +1,13 @@
 export default function HorizontalMarquee() {
   const items = [
-    "AI-POWERED ROUTING",
-    "99.9% UPTIME",
-    "150+ COUNTRIES",
+    "PAN-INDIA SHIPPING",
+    "COD & PREPAID ORDERS",
+    "MULTI-COURIER ROUTING",
     "REAL-TIME TRACKING",
-    "CUSTOMS AUTOMATION",
-    "24/7 SUPPORT",
-    "BORDERLESS FULFILLMENT",
-    "PREDICTIVE DEMAND",
+    "NDR MANAGEMENT",
+    "RETURNS & RTO",
+    "SHOPIFY INTEGRATION",
+    "AI-POWERED OPTIMISATION",
   ];
 
   return (

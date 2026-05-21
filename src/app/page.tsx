@@ -192,7 +192,7 @@ export default function Home() {
 
         {/* Ghost text parallax — bigger */}
         <div className="ghost-text-parallax absolute top-1/2 left-0 -translate-y-1/2 text-[clamp(8rem,20vw,25rem)] font-black text-white/[0.012] whitespace-nowrap pointer-events-none select-none z-0 leading-none tracking-tighter">
-          INFRASTRUCTURE · COMMERCE · INFRASTRUCTURE ·
+          SHIPPING · LOGISTICS · INDIA · SHIPPING · LOGISTICS · INDIA ·
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -201,7 +201,7 @@ export default function Home() {
               <div className="flex items-center gap-3 mb-8">
                 <div className="w-8 h-[1px] bg-[#00ff87]/60" />
                 <span className="text-[#00ff87] text-[9px] tracking-[0.45em] uppercase font-bold">
-                  The Infrastructure of Commerce
+                  Built for Indian Commerce
                 </span>
               </div>
 
@@ -215,24 +215,24 @@ export default function Home() {
                   backgroundClip: 'text',
                 }}
               >
-                We are building<br />
+                AI-powered shipping<br />
                 <span className="text-ghost-outline text-white/40" style={{ WebkitTextFillColor: 'transparent' }}>
-                  the future of trade.
+                  built for India.
                 </span>
               </h2>
 
               <p className="text-lg md:text-xl text-white/50 max-w-[540px] font-light leading-relaxed">
-                ShipBridge is reimagining the global supply chain with AI-powered routing, predictive demand modeling, and borderless fulfillment.
+                ShipBridge uses AI to help Indian D2C brands, SMEs, and marketplace sellers ship smarter. Multi-courier allocation, COD management, real-time tracking, and returns — automated from one dashboard.
               </p>
             </div>
 
             {/* 2×2 Stat Grid — more prominent */}
             <div className="lg:w-[45%] grid grid-cols-2 gap-5 w-full">
               {[
-                { target: "50", label: "Countries served", suffix: "+", accent: true },
-                { target: "99.9", label: "Uptime SLA", suffix: "%", accent: false },
-                { target: "14k", label: "Active shipments", suffix: "+", accent: false },
-                { target: "34", label: "Min avg. savings", suffix: "m", accent: true },
+                { target: "0", label: "AI-Powered Shipping Platform", suffix: "", accent: true, text: "ShipBridge" },
+                { target: "0", label: "Multi-Courier Automation", suffix: "", accent: false, text: "COD" },
+                { target: "0", label: "Real-Time Tracking Dashboard", suffix: "", accent: false, text: "NDR" },
+                { target: "0", label: "Smart Returns & RTO Management", suffix: "", accent: true, text: "RTO" },
               ].map((stat, i) => (
                 <div key={i} className="card-glow-brand p-6 rounded-xl relative overflow-hidden group backdrop-blur-xl">
                   {/* Hover glow */}
@@ -240,7 +240,7 @@ export default function Home() {
                   <div className="relative z-10">
                     <div className="text-[clamp(2rem,4vw,3.5rem)] font-black text-white mb-1 tracking-tight">
                       <span ref={el => { statsRefs.current[i] = el; }} data-target={stat.target}>
-                        {stat.target}
+                        {stat.text}
                       </span>
                       {stat.suffix}
                     </div>
@@ -266,7 +266,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-20 relative z-10">
           <div className="lg:w-1/2">
             <span className="text-[#00ff87] text-[10px] tracking-[0.4em] uppercase font-bold mb-8 block">
-              ShipBridge OS
+              ShipBridge Platform
             </span>
             <h2
               className="text-[clamp(2.5rem,6vw,5rem)] font-[200] leading-[1.0] tracking-[-0.04em] mb-8"
@@ -277,17 +277,17 @@ export default function Home() {
                 backgroundClip: 'text',
               }}
             >
-              One platform.<br/>Complete control.
+              One dashboard.<br/>Every shipment.
             </h2>
             <p className="text-white/60 text-lg mb-10 leading-relaxed max-w-lg font-light">
-              Our flagship ERP suite integrates every aspect of your logistics operations into a single, high-performance dashboard. Built for scale.
+              Manage every aspect of your shipping from a single AI-powered dashboard — courier selection, label generation, COD tracking, returns, and NDR management. Built for Indian ecommerce.
             </p>
             <ul className="space-y-6 mb-12">
               {[
-                "AI-driven route optimization",
-                "Automated customs & tax filing",
-                "Real-time inventory synchronization",
-                "Predictive demand analytics"
+                "Multi-courier selection and rate comparison",
+                "COD order management and remittance tracking",
+                "Automated RTO and NDR resolution",
+                "Returns and reverse pickup workflow"
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-4 text-white/80 group bg-white/[0.02] px-4 py-3 rounded-xl border border-white/5 backdrop-blur-lg">
                   <div className="w-6 h-6 rounded-full bg-[#00ff87]/10 flex items-center justify-center text-[#00ff87] group-hover:bg-[#00ff87]/20 transition-colors">
@@ -299,7 +299,7 @@ export default function Home() {
             </ul>
             <div className="button-wrap">
               <button className="uiverse-button group">
-                <span>Request Early Access</span>
+                <span>Book a Demo</span>
               </button>
               <div className="button-shadow" />
             </div>
@@ -322,7 +322,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="max-w-5xl mx-auto">
             <span className="text-[#f97316] text-[10px] tracking-[0.4em] uppercase font-bold mb-8 block text-center">
-              Our Vision
+              Our Mission
             </span>
 
             <div className="relative">
@@ -343,12 +343,12 @@ export default function Home() {
                     backgroundClip: 'text',
                   }}
                 >
-                  One operating system<br/>
-                  for global trade.
+                  One platform<br/>
+                  for Indian commerce.
                 </h2>
                 <div className="w-24 h-[2px] bg-gradient-to-r from-[#f97316] via-[#00ff87] to-[#f97316] mx-auto mb-12" />
                 <p className="text-xl md:text-2xl text-white/60 leading-relaxed font-light max-w-3xl mx-auto">
-                  We believe logistics should be invisible. ShipBridge unifies routing, customs, warehousing, and analytics into a single AI-native platform — so businesses can think globally and act instantly.
+                  Shipping in India is complex. Multiple couriers, pincode-level rules, COD reconciliation, and NDR management eat hours every day. ShipBridge uses AI to simplify it — automating courier selection, reducing RTO, and giving your customers real tracking from order to delivery.
                 </p>
 
               </div>
@@ -378,19 +378,19 @@ export default function Home() {
         <CircularTestimonials
           testimonials={[
             {
-              quote: "ShipBridge is redefining what global logistics can achieve. Our mission is to build the infrastructure that makes international trade as seamless as domestic shipping — with AI at the core of every decision.",
+              quote: "Shipping in India is fundamentally different. With 19,000+ pin codes, dozens of courier partners, and complex COD reconciliation, Indian D2C brands need a platform built for this reality — not a global solution retrofitted for India.",
               name: "Ashish Joshi",
               designation: "Founder & CFO",
               src: "/directors/ashish.svg",
             },
             {
-              quote: "We are building a technology platform that anticipates demand, optimizes routes in real-time, and eliminates friction across borders. The future of logistics is autonomous, intelligent, and invisible.",
+              quote: "Our AI models are trained on Indian shipping data — pincode-level courier performance, RTO patterns by region, and COD success rates. The result is a platform that doesn't just process shipments: it intelligently decides which courier to use for every single order.",
               name: "Anurag Singh",
               designation: "Chief Technology Officer",
               src: "/directors/anurag.svg",
             },
             {
-              quote: "Our vision is a world where businesses of any size can compete globally. ShipBridge levels the playing field by providing enterprise-grade logistics infrastructure to every company, everywhere.",
+              quote: "Indian ecommerce is projected to grow to $350B by 2030, but logistics remains the biggest bottleneck. ShipBridge exists to remove that friction — so a D2C brand in Jaipur can ship to a customer in Kohima as easily as they ship within their own city.",
               name: "Prachi Agarwal",
               designation: "Chief Executive Officer",
               src: "/directors/prachi.svg",
@@ -428,24 +428,24 @@ export default function Home() {
                   backgroundClip: 'text',
                 }}
               >
-                Ready to ship<br/>
-                beyond borders?
+                Ready to simplify<br/>
+                shipping across India?
               </h2>
               <p className="text-lg text-white/50 max-w-xl mx-auto mb-12 font-light leading-relaxed">
-                Join the next generation of logistics. AI-powered, borderless, and built for the future of global trade.
+                Join Indian D2C brands, SMEs, and marketplace sellers using ShipBridge to automate shipping, reduce returns, and delight customers with every delivery.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                 <div className="button-wrap">
                   <MagneticButton>
                     <Link href="/contact" className="flex items-center">
-                      Start Shipping <span className="ml-2">→</span>
+                      Start Shipping in India <span className="ml-2">→</span>
                     </Link>
                   </MagneticButton>
                 </div>
                 <div className="button-wrap">
                   <MagneticButton strength={0.2}>
                     <Link href="/franchise" className="flex items-center text-white/60">
-                      Become a Partner <span className="ml-2">→</span>
+                      Become a Delivery Partner <span className="ml-2">→</span>
                     </Link>
                   </MagneticButton>
                 </div>
@@ -464,14 +464,14 @@ export default function Home() {
                 <Image src={logo} alt="ShipBridge" width={110} height={36} style={{ height: 'auto' }} />
               </Link>
               <p className="text-white/40 text-sm max-w-sm leading-relaxed mb-10 font-light">
-                The next-generation logistics operating system. Powering global trade with artificial intelligence and borderless infrastructure.
+                Simplifying shipping for Indian brands. AI-powered multi-courier automation, COD management, real-time tracking, and returns — built for India.
               </p>
               <div className="flex gap-4">
                 {[
                   "M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z",
                   "M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.054 10.054 0 01-3.127 1.184 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
                 ].map((d, i) => (
-                  <a key={i} href="#" className="w-10 h-10 rounded-full border border-white/5 flex items-center justify-center text-white/30 hover:text-[#00ff87] hover:border-[#00ff87]/30 transition-all">
+                  <a key={i} href={i === 0 ? "https://linkedin.com/company/shipbridge" : "https://x.com/shipbridge"} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/5 flex items-center justify-center text-white/30 hover:text-[#00ff87] hover:border-[#00ff87]/30 transition-all">
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d={d}/></svg>
                   </a>
                 ))}
@@ -481,8 +481,8 @@ export default function Home() {
             <div>
               <h5 className="text-[10px] uppercase tracking-[0.3em] text-white/45 mb-8 font-bold">Platform</h5>
               <ul className="space-y-4">
-                {['Logistics OS', 'Smart Routing', 'Customs', 'Warehousing'].map(item => (
-                  <li key={item}><Link href="#" className="text-white/45 hover:text-white/80 transition-colors text-sm font-light">{item}</Link></li>
+                {['How It Works', 'Integrations', 'Tracking', 'Pricing'].map(item => (
+                  <li key={item}><Link href={`/${item.toLowerCase().replace(/\s+/g, '-')}`} className="text-white/45 hover:text-white/80 transition-colors text-sm font-light">{item}</Link></li>
                 ))}
               </ul>
             </div>
@@ -500,11 +500,11 @@ export default function Home() {
           <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-10" />
 
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-white/40 uppercase tracking-widest font-medium">
-            <div>© 2026 ShipBridge Inc. Precision Global Logistics.</div>
+            <div>© 2026 ShipBridge. AI-Powered Shipping for Indian Commerce.</div>
             <div className="flex gap-10">
-              <a href="#" className="text-white/40 hover:text-white/80 transition-colors">Privacy</a>
-              <a href="#" className="text-white/40 hover:text-white/80 transition-colors">Terms</a>
-              <a href="#" className="text-white/40 hover:text-white/80 transition-colors">Security</a>
+              <Link href="/privacy" className="text-white/40 hover:text-white/80 transition-colors">Privacy</Link>
+              <Link href="/terms" className="text-white/40 hover:text-white/80 transition-colors">Terms</Link>
+              <Link href="/faq" className="text-white/40 hover:text-white/80 transition-colors">FAQ</Link>
             </div>
           </div>
         </div>

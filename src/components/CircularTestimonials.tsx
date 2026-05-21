@@ -147,7 +147,7 @@ export default function CircularTestimonials({
         zIndex: 2,
         opacity: 1,
         pointerEvents: "auto" as const,
-        transform: `translateX(-${gap}px) translateY(-${maxStickUp}px) scale(0.85) rotateY(15deg)`,
+        transform: `translateX(-${gap}px) translateY(-${maxStickUp}px) scale(0.85)`,
         transition: "all 0.8s cubic-bezier(.4,2,.3,1)",
       };
     }
@@ -156,7 +156,7 @@ export default function CircularTestimonials({
         zIndex: 2,
         opacity: 1,
         pointerEvents: "auto" as const,
-        transform: `translateX(${gap}px) translateY(-${maxStickUp}px) scale(0.85) rotateY(-15deg)`,
+        transform: `translateX(${gap}px) translateY(-${maxStickUp}px) scale(0.85)`,
         transition: "all 0.8s cubic-bezier(.4,2,.3,1)",
       };
     }
@@ -172,7 +172,7 @@ export default function CircularTestimonials({
     <div className="w-full max-w-5xl mx-auto px-6">
       <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
         {/* Image carousel */}
-        <div ref={imageContainerRef} className="relative w-full h-[20rem] md:h-[26rem] perspective-[1000px]">
+        <div ref={imageContainerRef} className="relative w-full h-[20rem] md:h-[26rem]">
           {testimonials.map((testimonial, index) => (
             <img
               key={testimonial.src}

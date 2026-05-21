@@ -20,7 +20,7 @@ export default function NotFound() {
         />
         
         <p className="text-lg text-white/50 max-w-md mx-auto mb-12 font-light leading-relaxed">
-          The page you are looking for has been redirected or does not exist in our global registry.
+          The page you are looking for has been redirected or does not exist. Let us help you find what you need.
         </p>
 
         <div className="button-wrap mx-auto">
