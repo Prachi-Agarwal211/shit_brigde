@@ -6,20 +6,36 @@ export default function ScrollProgress() {
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollTop;
+    let ticking = false;
+
+    const updateScroll = () => {
+      const totalScroll = window.scrollY || document.documentElement.scrollTop;
       const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scroll = `${(totalScroll / windowHeight) * 100}%`;
-      setWidth(totalScroll === 0 ? 0 : parseFloat(scroll));
+      if (windowHeight > 0) {
+        const progress = (totalScroll / windowHeight) * 100;
+        setWidth(Math.min(100, Math.max(0, progress)));
+      } else {
+        setWidth(0);
+      }
+      ticking = false;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScroll);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    updateScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <div
-      className="scroll-progress"
+      className="scroll-progress animate-pulse"
       style={{ width: `${width}%` }}
     />
   );

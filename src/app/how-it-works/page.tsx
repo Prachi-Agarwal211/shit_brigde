@@ -140,7 +140,7 @@ export default function HowItWorksPage() {
   }, []);
 
   return (
-    <main ref={containerRef} className="min-h-screen bg-[#050505] text-white overflow-hidden">
+    <main ref={containerRef} className="relative min-h-screen text-white overflow-hidden bg-transparent">
       {/* Hero */}
       <section className="relative pt-40 pb-20 px-5 md:pt-52 md:pb-32 md:px-12 overflow-hidden text-center">
         <SectionAurora variant="dual" className="opacity-40" />
@@ -158,7 +158,7 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Steps */}
-      <section className="relative py-24 md:py-32 px-5 md:px-12 bg-[#0a0a0a] overflow-hidden">
+      <section className="relative py-24 md:py-32 px-5 md:px-12 bg-transparent overflow-hidden">
         <SectionAurora variant="ember" className="opacity-20" />
         <div className="max-w-5xl mx-auto steps-grid relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {steps.map((step, idx) => (

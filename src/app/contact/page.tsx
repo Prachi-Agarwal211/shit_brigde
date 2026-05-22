@@ -15,7 +15,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#050505] text-white overflow-hidden">
+    <main className="relative min-h-screen text-white overflow-hidden bg-transparent">
       <section className="relative pt-40 pb-20 px-5 md:pt-52 md:pb-32 md:px-12 overflow-hidden">
         <SectionAurora variant="dual" className="opacity-40" />
         <div className="max-w-7xl mx-auto relative z-10">
@@ -66,7 +66,7 @@ export default function ContactPage() {
               </div>
 
               {/* India Map Visual */}
-              <div className="rounded-2xl bg-[#0f1a14] border border-[#00ff87]/20 h-[300px] w-full flex flex-col items-center justify-center relative overflow-hidden group">
+              <div className="rounded-2xl bg-gradient-to-br from-[#064e3b]/15 to-white/[0.01] backdrop-blur-xl border border-[#00ff87]/20 h-[300px] w-full flex flex-col items-center justify-center relative overflow-hidden group">
                 <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,135,0.05),transparent_70%)]" />
                 {/* Decorative dot grid */}
                 <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+PHBhdGggZD0iTTAgMGg2MHY2MEgweiIgZmlsbD0ibm9uZSIvPjxjaXJjbGUgY3g9IjMwIiBjeT0iMzAiIHI9IjEuNSIgZmlsbD0icmdiYSgwLDI1NSwxMzUsMC4yKSIvPjwvc3ZnPg==')] opacity-40" />
@@ -111,19 +111,19 @@ export default function ContactPage() {
                   <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                     <div className="space-y-2">
                       <label className="text-xs uppercase tracking-widest text-white/40">Your Name</label>
-                      <input required type="text" className="w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="John Doe" />
+                      <input required type="text" className="w-full bg-[#0a0a0a]/50 backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="John Doe" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs uppercase tracking-widest text-white/40">Your Email</label>
-                      <input required type="email" className="w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="john@example.com" />
+                      <input required type="email" className="w-full bg-[#0a0a0a]/50 backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="john@example.com" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs uppercase tracking-widest text-white/40">Subject</label>
-                      <input required type="text" className="w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="How can we help?" />
+                      <input required type="text" className="w-full bg-[#0a0a0a]/50 backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="How can we help?" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs uppercase tracking-widest text-white/40">Message</label>
-                      <textarea required rows={5} className="w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors resize-none" placeholder="Your message..." />
+                      <textarea required rows={5} className="w-full bg-[#0a0a0a]/50 backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors resize-none" placeholder="Your message..." />
                     </div>
                     <div className="button-wrap w-full mt-4">
                       <button type="submit" className="uiverse-button w-full">

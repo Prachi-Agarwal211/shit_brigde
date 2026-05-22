@@ -5,7 +5,16 @@
       "WebFetch(domain:www.shiprocket.in)",
       "WebFetch(domain:www.delhivery.com)",
       "Bash(npx next:*)",
-      "Bash(find C:Users15anuOneDrive文档codeshipbridgesrc -name *.tsx -o -name *.ts)"
+      "Bash(find C:Users15anuOneDrive文档codeshipbridgesrc -name *.tsx -o -name *.ts)",
+      "Bash(grep -E \"\\\\.\\(jpg|jpeg|png|mp4|webm|svg\\)$\")",
+      "Bash(ls C:/Users/15anu/OneDrive/文档/code/shipbridge/public/*.jpg)",
+      "Bash(find C:/Users/15anu/OneDrive/文档/code/shipbridge/public -maxdepth 2 -name *.jpg -o -name *.jpeg -o -name *.png)",
+      "Bash(ls:*)",
+      "WebFetch(domain:gemini.google.com)",
+      "WebSearch",
+      "WebFetch(domain:deepmind.google)",
+      "Bash(find C:/Users/15anu/OneDrive/文档/code/shipbridge/node_modules/@paper-design -type f -name *.d.ts)",
+      "Bash(xargs grep:*)"
     ]
   }
 }

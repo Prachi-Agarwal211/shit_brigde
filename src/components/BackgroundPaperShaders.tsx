@@ -1,73 +1,59 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useState } from "react";
 import { MeshGradient } from "@paper-design/shaders-react";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 export default function BackgroundPaperShaders() {
   const [mounted, setMounted] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     setMounted(true);
+
+    const handleVisibility = () => {
+      setIsVisible(!document.hidden);
+    };
+
+    document.addEventListener("visibilitychange", handleVisibility);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
   }, []);
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const st = ScrollTrigger.create({
-      start: 0,
-      end: () => document.documentElement.scrollHeight - window.innerHeight,
-      onUpdate: (self) => {
-        setScrollProgress(self.progress);
-      },
-    });
-
-    return () => st.kill();
-  }, []);
-
-  const speed = 0.3 + scrollProgress * 1.0;
-  const distortion = 0.4 + scrollProgress * 0.35;
-  const swirl = 0.35 + scrollProgress * 0.4;
 
   return (
-    <div
-      ref={containerRef}
-      className="fixed inset-0 z-0 pointer-events-none"
+    <div 
+      className="fixed inset-0 w-full h-full -z-50 pointer-events-none"
       style={{ isolation: "isolate" }}
     >
-      {/* Dark gradient base (SSR fallback) */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#030303] via-[#080808] to-[#030303]" />
+      {/* Dark base */}
+      <div className="absolute inset-0 bg-[#020202]" />
 
-      {/* Single MeshGradient — client only, zero grain */}
-      {mounted && (
+      {/* MeshGradient — Gemini-style soft ambient bloom */}
+      {mounted && isVisible && (
         <MeshGradient
           className="absolute inset-0 w-full h-full"
           colors={[
-            "#030303",
-            "#0a1a10",
-            "#001a0a",
-            "#0d2818",
+            "#00ff87", // ShipBridge Green
+            "#000000",
+            "#ff6b35", // ShipBridge Orange
+            "#000000",
             "#00ff87",
-            "#030303",
+            "#000000",
             "#ff6b35",
-            "#0a1a10",
+            "#000000"
           ]}
-          distortion={distortion}
-          swirl={swirl}
+          distortion={0.25}
+          swirl={0.3}
           grainMixer={0}
           grainOverlay={0}
-          speed={speed}
-          scale={1.5}
+          speed={0.1}
+          scale={3.0}
           fit="cover"
         />
       )}
+
+      {/* Soft radial vignette — focuses the glow in the center and fades to pure black at edges */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_10%,rgba(0,0,0,0.6)_60%,#020202_100%)] pointer-events-none" />
     </div>
   );
 }

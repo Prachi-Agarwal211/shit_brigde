@@ -60,7 +60,7 @@ export default function FranchisePage() {
   };
 
   return (
-    <main ref={containerRef} className="min-h-screen bg-[#050505] text-white overflow-hidden">
+    <main ref={containerRef} className="relative min-h-screen text-white overflow-hidden bg-transparent">
       {/* Hero Section */}
       <section className="relative pt-40 pb-20 px-5 md:pt-52 md:pb-32 md:px-12 flex flex-col items-center text-center overflow-hidden">
         <SectionAurora variant="subtle" />
@@ -78,7 +78,7 @@ export default function FranchisePage() {
       </section>
 
       {/* Benefits Grid */}
-      <section className="relative py-24 md:py-32 px-5 md:px-12 overflow-hidden bg-[#0a0a0a]">
+      <section className="relative py-24 md:py-32 px-5 md:px-12 overflow-hidden bg-transparent">
         <SectionAurora variant="dual" className="opacity-30" />
         <div className="max-w-7xl mx-auto benefits-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 relative z-10">
           {[
@@ -101,7 +101,7 @@ export default function FranchisePage() {
       </section>
 
       {/* Application Form Section */}
-      <section className="relative py-24 md:py-40 px-5 md:px-12 form-section bg-[#050505] overflow-hidden">
+      <section className="relative py-24 md:py-40 px-5 md:px-12 form-section bg-transparent overflow-hidden">
         <SectionAurora variant="ember" className="opacity-20" />
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 relative z-10">
           
@@ -124,36 +124,36 @@ export default function FranchisePage() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-widest text-white/40">Full Name</label>
-                    <input required type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="John Doe" />
+                    <input required type="text" className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="John Doe" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-widest text-white/40">Email</label>
-                    <input required type="email" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="john@example.com" />
+                    <input required type="email" className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="john@example.com" />
                   </div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-widest text-white/40">Phone</label>
-                    <input required type="tel" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="+91 XXXXX XXXXX" />
+                    <input required type="tel" className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="+91 XXXXX XXXXX" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-widest text-white/40">City / State</label>
-                    <input required type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="Mumbai, Maharashtra" />
+                    <input required type="text" className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="Mumbai, Maharashtra" />
                   </div>
                 </div>
 
                 <div className="space-y-2">
                   <label className="text-xs uppercase tracking-widest text-white/40">Company Name</label>
-                  <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="Doe Logistics Pvt Ltd (Optional)" />
+                  <input type="text" className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="Doe Logistics Pvt Ltd (Optional)" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs uppercase tracking-widest text-white/40">GST Number (Optional)</label>
-                  <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="22AAAAA0000A1Z5" />
+                  <input type="text" className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="22AAAAA0000A1Z5" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs uppercase tracking-widest text-white/40">Business Type</label>
-                  <select className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#00ff87]/50 transition-colors appearance-none">
+                  <select className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#00ff87]/50 transition-colors appearance-none">
                     <option value="" className="bg-[#0a0a0a]">Select business type...</option>
                     <option value="individual" className="bg-[#0a0a0a]">Individual / Sole Proprietor</option>
                     <option value="partnership" className="bg-[#0a0a0a]">Partnership</option>
@@ -165,7 +165,7 @@ export default function FranchisePage() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-widest text-white/40">Years in Logistics (India)</label>
-                    <select required className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#00ff87]/50 transition-colors appearance-none">
+                    <select required className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#00ff87]/50 transition-colors appearance-none">
                       <option value="" className="bg-[#0a0a0a]">Select experience...</option>
                       <option value="<1" className="bg-[#0a0a0a]">&lt; 1 Year</option>
                       <option value="1-3" className="bg-[#0a0a0a]">1-3 Years</option>
@@ -175,7 +175,7 @@ export default function FranchisePage() {
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-widest text-white/40">Investment Capacity</label>
-                    <select required className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#00ff87]/50 transition-colors appearance-none">
+                    <select required className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#00ff87]/50 transition-colors appearance-none">
                       <option value="" className="bg-[#0a0a0a]">Select capacity...</option>
                       <option value="5-10" className="bg-[#0a0a0a]">₹5L - ₹10L</option>
                       <option value="10-25" className="bg-[#0a0a0a]">₹10L - ₹25L</option>
@@ -187,7 +187,7 @@ export default function FranchisePage() {
 
                 <div className="space-y-2">
                   <label className="text-xs uppercase tracking-widest text-white/40">Message</label>
-                  <textarea required rows={5} className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors resize-none" placeholder="Tell us about yourself and why you want to partner with ShipBridge..." />
+                  <textarea required rows={5} className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors resize-none" placeholder="Tell us about yourself and why you want to partner with ShipBridge..." />
                 </div>
 
                 <div className="button-wrap w-full mt-8">

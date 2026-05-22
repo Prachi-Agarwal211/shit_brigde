@@ -6,7 +6,7 @@ import SectionAurora from "@/components/SectionAurora";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-[#050505] text-white overflow-hidden">
+    <main className="relative min-h-screen text-white overflow-hidden bg-transparent">
       {/* Hero Section */}
       <section className="relative pt-40 pb-20 px-5 md:pt-52 md:pb-32 md:px-12 overflow-hidden">
         <SectionAurora variant="subtle" />
@@ -48,7 +48,7 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline Section */}
-      <section className="relative py-24 md:py-32 px-5 md:px-12 overflow-hidden bg-[#0a0a0a]">
+      <section className="relative py-24 md:py-32 px-5 md:px-12 overflow-hidden bg-transparent">
         <SectionAurora variant="dual" className="opacity-30" />
         <div className="max-w-7xl mx-auto relative z-10">
           <span className="text-[#00ff87] text-[10px] tracking-[0.3em] uppercase font-bold mb-6 block text-center md:text-left">
@@ -68,7 +68,7 @@ export default function AboutPage() {
               { year: "2027+", title: "Deep India Growth", desc: "Expanding pincode coverage, franchise network, and platform capabilities." },
             ].map((milestone, idx) => (
               <div key={idx} className="relative pl-12 md:pl-0 md:pt-12 md:w-1/5 flex flex-col md:items-center md:text-center group">
-                <div className="absolute left-0 top-0 w-[32px] h-[32px] md:left-1/2 md:-translate-x-1/2 bg-[#0a0a0a] border-4 border-white/10 rounded-full flex items-center justify-center transition-colors group-hover:border-[#00ff87] group-hover:shadow-[0_0_20px_rgba(0,255,135,0.4)] z-10">
+                <div className="absolute left-0 top-0 w-[32px] h-[32px] md:left-1/2 md:-translate-x-1/2 bg-black border-4 border-white/10 rounded-full flex items-center justify-center transition-colors group-hover:border-[#00ff87] group-hover:shadow-[0_0_20px_rgba(0,255,135,0.4)] z-10">
                   <div className="w-2 h-2 rounded-full bg-[#00ff87] opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
                 <div className="text-3xl font-black text-white font-display mb-2">{milestone.year}</div>

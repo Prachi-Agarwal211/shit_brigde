@@ -1,13 +1,11 @@
 "use client";
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
 
 export default function DashboardMockup() {
   const cardRef = useRef<HTMLDivElement>(null);
   const glareRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Trigger progress bar animation when in view
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -22,7 +20,6 @@ export default function DashboardMockup() {
     return () => observer.disconnect();
   }, []);
 
-  // Mouse tracking for reflection — only tracks when inside the card
   const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current || !glareRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
@@ -46,7 +43,7 @@ export default function DashboardMockup() {
       />
       
       {/* Window bar */}
-      <div className="flex items-center gap-2 mb-6 pb-4 border-b border-white/5">
+      <div className="flex items-center gap-2 mb-6 pb-4 border-b border-white/5 font-sans">
         <div className="flex gap-1.5">
           <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
           <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
@@ -55,26 +52,31 @@ export default function DashboardMockup() {
         <span className="text-xs text-white/30 tracking-widest ml-2 uppercase">ShipBridge · Live Dashboard</span>
         <div className="ml-auto flex items-center gap-1.5">
           <div className="w-1.5 h-1.5 rounded-full bg-[#00ff87] animate-pulse" />
-          <span className="text-[10px] text-[#00ff87]">Live</span>
+          <span className="text-[10px] text-[#00ff87] font-semibold">Live</span>
         </div>
       </div>
 
       {/* Metrics */}
-      <div className="space-y-5 mb-6">
+      <div className="space-y-5 mb-6 font-sans">
         {[
-          { label: "AI Route Efficiency", value: "94%", width: "0.94" },
-          { label: "On-time Delivery", value: "99.2%", width: "0.992" },
-          { label: "COD Orders Automated", value: "91%", width: "0.91" },
+          { label: "SLA Delivery Success", value: "99.2%", width: "0.992", isOrange: false },
+          { label: "COD D+2 Remittance Rate", value: "95.0%", width: "0.95", isOrange: false },
+          { label: "Average RTO Reduction", value: "88.6%", width: "0.886", isOrange: true },
         ].map((metric, i) => (
           <div key={i}>
             <div className="flex justify-between mb-1.5">
               <span className="text-xs text-white/40 uppercase tracking-wider">{metric.label}</span>
-              <span className="text-xs text-[#00ff87] font-bold font-mono">{metric.value}</span>
+              <span className={`text-xs font-bold font-mono ${metric.isOrange ? "text-[#f97316]" : "text-[#00ff87]"}`}>{metric.value}</span>
             </div>
             <div className="h-[3px] bg-white/5 rounded-full overflow-hidden">
               <div 
                 className="db-progress-bar h-full rounded-full"
-                style={{ '--target-scale': metric.width } as React.CSSProperties}
+                style={{ 
+                  '--target-scale': metric.width,
+                  background: metric.isOrange 
+                    ? "linear-gradient(90deg, #f97316, #ff8c42)" 
+                    : "linear-gradient(90deg, #00ff87, #00c46a)" 
+                } as React.CSSProperties}
               />
             </div>
           </div>
@@ -82,10 +84,10 @@ export default function DashboardMockup() {
       </div>
 
       {/* Sparkline SVG */}
-      <div className="bg-white/2 rounded-xl p-4 mb-4 border border-white/5">
+      <div className="bg-white/2 rounded-xl p-4 mb-4 border border-white/5 font-sans">
         <div className="flex justify-between items-center mb-3">
           <span className="text-[10px] text-white/40 uppercase tracking-wider">Shipments Processed</span>
-          <span className="text-[10px] text-[#00ff87] font-mono">↑ 12.4%</span>
+          <span className="text-[10px] text-[#00ff87] font-mono">↑ 12.4% MoM</span>
         </div>
         <svg viewBox="0 0 200 50" className="w-full h-12">
           <defs>
@@ -102,14 +104,14 @@ export default function DashboardMockup() {
       </div>
 
       {/* Bottom stats */}
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-3 font-sans">
         <div className="bg-white/3 rounded-xl p-4 border border-white/5">
-          <p className="text-[10px] text-white/30 uppercase tracking-wider mb-1">Active Shipments</p>
-          <p className="text-xl font-bold text-white font-mono">14,892</p>
+          <p className="text-[10px] text-white/30 uppercase tracking-wider mb-1">COD Remitted Today</p>
+          <p className="text-xl font-bold text-white font-mono">₹28.4L</p>
         </div>
         <div className="bg-white/3 rounded-xl p-4 border border-[#00ff87]/10">
-          <p className="text-[10px] text-white/30 uppercase tracking-wider mb-1">AI Time Saved</p>
-          <p className="text-xl font-bold text-[#00ff87] font-mono">34 min</p>
+          <p className="text-[10px] text-white/30 uppercase tracking-wider mb-1">RTO Losses Prevented</p>
+          <p className="text-xl font-bold text-[#00ff87] font-mono">₹1.82L</p>
         </div>
       </div>
     </div>

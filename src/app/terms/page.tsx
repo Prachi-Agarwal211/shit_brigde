@@ -1,6 +1,6 @@
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-[#050505] text-white overflow-hidden">
+    <main className="relative min-h-screen text-white overflow-hidden bg-transparent">
       {/* Hero */}
       <section className="relative pt-40 pb-20 px-5 md:pt-52 md:pb-32 md:px-12 overflow-hidden">
         <div className="max-w-4xl mx-auto relative z-10">

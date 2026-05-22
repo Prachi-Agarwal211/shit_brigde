@@ -6,7 +6,7 @@ import TextReveal from "@/components/TextReveal";
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen bg-[#050505] text-white flex flex-col items-center justify-center p-6 text-center overflow-hidden relative">
+    <main className="relative min-h-screen text-white flex flex-col items-center justify-center p-6 text-center overflow-hidden bg-transparent">
       <SectionAurora variant="dual" className="opacity-40" />
       <div className="relative z-10">
         <span className="text-[#00ff87] text-[10px] tracking-[0.4em] uppercase font-bold mb-6 block">

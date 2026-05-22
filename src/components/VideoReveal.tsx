@@ -199,7 +199,7 @@ export default function VideoReveal() {
             // AI-Powered
           </p>
           <p className="text-xl md:text-3xl font-bold text-white/90 leading-tight -mt-1">
-            Global Logistics
+            Pan-India Shipping
           </p>
         </div>
       </div>
@@ -211,7 +211,7 @@ export default function VideoReveal() {
       >
         <div className="inline-block px-6 py-4 rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-xl shadow-lg">
           <p className="text-[9px] tracking-[0.3em] uppercase text-white/30 font-medium mb-2">Scope</p>
-          <p className="text-sm font-bold text-white/80">50+ Countries</p>
+          <p className="text-sm font-bold text-white/80">29,000+ Pin Codes</p>
           <p className="text-sm text-white/50">AI-Native Platform</p>
         </div>
       </div>

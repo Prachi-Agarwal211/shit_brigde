@@ -14,6 +14,7 @@ import VideoReveal from "@/components/VideoReveal";
 import DashboardMockup from "@/components/DashboardMockup";
 import MagneticButton from "@/components/MagneticButton";
 import CircularTestimonials from "@/components/CircularTestimonials";
+import StoryGallery from "@/components/StoryGallery";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -113,7 +114,7 @@ export default function Home() {
       });
 
       // 2. Section fade-up
-      const sections = [brandSectionRef.current, erpSectionRef.current, servicesGridRef.current, visionSectionRef.current];
+      const sections = [erpSectionRef.current, servicesGridRef.current, visionSectionRef.current];
       sections.forEach((section) => {
         if (!section) return;
         const tl = gsap.timeline({
@@ -167,16 +168,65 @@ export default function Home() {
         }
       });
 
-      // 6. Volumetric orb drift
+      // 6. Brand section: pin left column, stagger stat cards on scroll
+      const leftColumn = brandSectionRef.current?.querySelector('.lg\\:w-\\[55\\%\\]');
+      const rightGrid = brandSectionRef.current?.querySelector('.lg\\:w-\\[45\\%\\] > .grid');
+      if (leftColumn && rightGrid && brandSectionRef.current) {
+        // Pin the left column while scrolling through the brand section
+        ScrollTrigger.create({
+          trigger: brandSectionRef.current,
+          start: "top 20%",
+          end: "+=150%",
+          pin: leftColumn,
+          pinSpacing: false,
+          scrub: 1,
+        });
+
+        // Stagger the stat cards upward on scroll
+        const cards = rightGrid.querySelectorAll(':scope > div');
+        gsap.fromTo(cards,
+          { y: 80, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            stagger: 0.15,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: brandSectionRef.current,
+              start: "top 30%",
+              end: "+=120%",
+              scrub: 2,
+            },
+          }
+        );
+      }
+
+      // 7. Volumetric orbs — continuous floating, no scroll scrub
       gsap.to(".orb-drift", {
-        y: -80,
-        scrollTrigger: {
-          trigger: erpSectionRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 2,
-        }
+        y: -30,
+        x: 20,
+        duration: 6,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
       });
+
+      // 8. Footer brand reveal — scale up from 0.7 to 1.0, fade in
+      const footerBrand = document.querySelector('.footer-brand-reveal h3');
+      if (footerBrand) {
+        gsap.to(footerBrand, {
+          scale: 1,
+          opacity: 1,
+          duration: 1.5,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: footerBrand,
+            start: "top 85%",
+            end: "top 40%",
+            scrub: 2,
+          },
+        });
+      }
     }, containerRef);
 
     return () => ctx.revert();
@@ -205,23 +255,21 @@ export default function Home() {
                 </span>
               </div>
 
-              {/* Main heading — huge, thin, gradient */}
+              {/* Main heading — solid white, clean, readable */}
               <h2
-                className="text-[clamp(3rem,8vw,7rem)] font-[200] leading-[0.95] tracking-[-0.04em] mb-10"
+                className="text-[clamp(3rem,8vw,7rem)] font-[200] tracking-wide leading-[0.95] mb-10"
                 style={{
-                  background: 'linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.7) 50%, rgba(0,255,135,0.4) 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
+                  color: '#ffffff',
+                  textShadow: '0 2px 40px rgba(0,0,0,0.8), 0 0 80px rgba(0,0,0,0.4)',
                 }}
               >
                 AI-powered shipping<br />
-                <span className="text-ghost-outline text-white/40" style={{ WebkitTextFillColor: 'transparent' }}>
+                <span style={{ color: 'rgba(255,255,255,0.8)' }}>
                   built for India.
                 </span>
               </h2>
 
-              <p className="text-lg md:text-xl text-white/50 max-w-[540px] font-light leading-relaxed">
+              <p className="text-lg md:text-xl text-white/60 max-w-[540px] font-light leading-relaxed">
                 ShipBridge uses AI to help Indian D2C brands, SMEs, and marketplace sellers ship smarter. Multi-courier allocation, COD management, real-time tracking, and returns — automated from one dashboard.
               </p>
             </div>
@@ -229,10 +277,10 @@ export default function Home() {
             {/* 2×2 Stat Grid — more prominent */}
             <div className="lg:w-[45%] grid grid-cols-2 gap-5 w-full">
               {[
-                { target: "0", label: "AI-Powered Shipping Platform", suffix: "", accent: true, text: "ShipBridge" },
-                { target: "0", label: "Multi-Courier Automation", suffix: "", accent: false, text: "COD" },
-                { target: "0", label: "Real-Time Tracking Dashboard", suffix: "", accent: false, text: "NDR" },
-                { target: "0", label: "Smart Returns & RTO Management", suffix: "", accent: true, text: "RTO" },
+                { target: "40", label: "AI-Powered Shipping Platform", suffix: "+", accent: true },
+                { target: "150", label: "Multi-Courier Automation", suffix: "+", accent: false },
+                { target: "3", label: "Real-Time Tracking Dashboard", suffix: "M+", accent: false },
+                { target: "97.5", label: "Smart Returns & RTO Management", suffix: "%", accent: true },
               ].map((stat, i) => (
                 <div key={i} className="card-glow-brand p-6 rounded-xl relative overflow-hidden group backdrop-blur-xl">
                   {/* Hover glow */}
@@ -240,11 +288,11 @@ export default function Home() {
                   <div className="relative z-10">
                     <div className="text-[clamp(2rem,4vw,3.5rem)] font-black text-white mb-1 tracking-tight">
                       <span ref={el => { statsRefs.current[i] = el; }} data-target={stat.target}>
-                        {stat.text}
+                        0
                       </span>
                       {stat.suffix}
                     </div>
-                    <div className="text-[9px] text-white/30 uppercase tracking-[0.22em] font-medium">{stat.label}</div>
+                    <div className="text-[9px] text-white/50 uppercase tracking-[0.22em] font-medium">{stat.label}</div>
                   </div>
                 </div>
               ))}
@@ -271,10 +319,8 @@ export default function Home() {
             <h2
               className="text-[clamp(2.5rem,6vw,5rem)] font-[200] leading-[1.0] tracking-[-0.04em] mb-8"
               style={{
-                background: 'linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.6) 50%, rgba(0,255,135,0.3) 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                color: '#ffffff',
+                textShadow: '0 2px 40px rgba(0,0,0,0.8)',
               }}
             >
               One dashboard.<br/>Every shipment.
@@ -311,7 +357,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== SECTION 4: MARQUEE ========== */}
+      {/* ========== SECTION 4: STORY GALLERY ========== */}
+      <StoryGallery />
+
+      {/* ========== SECTION 5: MARQUEE ========== */}
       <section className="relative z-20">
         <HorizontalMarquee />
       </section>
@@ -337,17 +386,15 @@ export default function Home() {
                 <h2
                   className="text-[clamp(2.5rem,5vw,4.5rem)] font-[200] leading-[1.0] tracking-[-0.04em] mb-12"
                   style={{
-                    background: 'linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.5) 50%, rgba(249,115,22,0.3) 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
+                    color: '#ffffff',
+                    textShadow: '0 2px 40px rgba(0,0,0,0.8)',
                   }}
                 >
                   One platform<br/>
                   for Indian commerce.
                 </h2>
                 <div className="w-24 h-[2px] bg-gradient-to-r from-[#f97316] via-[#00ff87] to-[#f97316] mx-auto mb-12" />
-                <p className="text-xl md:text-2xl text-white/60 leading-relaxed font-light max-w-3xl mx-auto">
+                <p className="text-xl md:text-2xl text-white/70 leading-relaxed font-light max-w-3xl mx-auto">
                   Shipping in India is complex. Multiple couriers, pincode-level rules, COD reconciliation, and NDR management eat hours every day. ShipBridge uses AI to simplify it — automating courier selection, reducing RTO, and giving your customers real tracking from order to delivery.
                 </p>
 
@@ -367,9 +414,10 @@ export default function Home() {
             Leadership
           </span>
           <h2
-            className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text uppercase text-center"
+            className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight uppercase text-center"
             style={{
-              backgroundImage: 'linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,255,255,0.4))',
+              color: '#ffffff',
+              textShadow: '0 2px 40px rgba(0,0,0,0.8)',
             }}
           >
             Board of Directors
@@ -422,16 +470,14 @@ export default function Home() {
               <h2
                 className="text-[clamp(2.5rem,5vw,4.5rem)] font-[200] leading-[1.0] tracking-[-0.04em] mb-8"
                 style={{
-                  background: 'linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.5) 50%, rgba(0,255,135,0.3) 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
+                  color: '#ffffff',
+                  textShadow: '0 2px 40px rgba(0,0,0,0.8)',
                 }}
               >
                 Ready to simplify<br/>
                 shipping across India?
               </h2>
-              <p className="text-lg text-white/50 max-w-xl mx-auto mb-12 font-light leading-relaxed">
+              <p className="text-lg text-white/60 max-w-xl mx-auto mb-12 font-light leading-relaxed">
                 Join Indian D2C brands, SMEs, and marketplace sellers using ShipBridge to automate shipping, reduce returns, and delight customers with every delivery.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -456,8 +502,23 @@ export default function Home() {
       </section>
 
       {/* ========== SECTION 8: FOOTER ========== */}
-      <footer className="relative z-20 py-20 px-6 md:px-12 border-t border-white/[0.06] bg-white/[0.02] backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto" style={{ mixBlendMode: 'screen' }}>
+      <footer className="relative z-20 py-20 px-6 md:px-12 border-t border-white/[0.06] bg-white/[0.02] backdrop-blur-xl overflow-hidden">
+        {/* Giant clipped SHIPBRIDGE reveal */}
+        <div className="footer-brand-reveal w-full overflow-hidden select-none">
+          <h3
+            className="text-center font-black leading-none tracking-tighter text-white/[0.015] whitespace-nowrap"
+            style={{
+              fontSize: 'clamp(6rem, 25vw, 28rem)',
+              transformOrigin: 'center center',
+              opacity: 0,
+              scale: 0.7,
+            }}
+          >
+            SHIPBRIDGE
+          </h3>
+        </div>
+
+        <div className="max-w-7xl mx-auto mt-[-2rem]" style={{ mixBlendMode: 'screen' }}>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
             <div className="col-span-1 md:col-span-2">
               <Link href="/" className="inline-block mb-10 opacity-90 hover:opacity-100 transition-opacity" style={{ mixBlendMode: 'unset' }}>

@@ -35,7 +35,7 @@ const couriers = [
 
 export default function IntegrationsPage() {
   return (
-    <main className="min-h-screen bg-[#050505] text-white overflow-hidden">
+    <main className="relative min-h-screen text-white overflow-hidden bg-transparent">
       {/* Hero */}
       <section className="relative pt-40 pb-20 px-5 md:pt-52 md:pb-32 md:px-12 overflow-hidden text-center">
         <SectionAurora variant="dual" className="opacity-40" />
@@ -53,7 +53,7 @@ export default function IntegrationsPage() {
       </section>
 
       {/* Ecommerce Platforms */}
-      <section className="relative py-24 md:py-32 px-5 md:px-12 bg-[#0a0a0a] overflow-hidden">
+      <section className="relative py-24 md:py-32 px-5 md:px-12 bg-transparent overflow-hidden">
         <SectionAurora variant="ember" className="opacity-20" />
         <div className="max-w-5xl mx-auto relative z-10">
           <h2 className="text-2xl md:text-4xl font-black tracking-tighter mb-4 font-display text-center">

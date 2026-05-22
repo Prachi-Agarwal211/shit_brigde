@@ -14,7 +14,24 @@ if (typeof window !== "undefined") {
 
 export default function Header() {
   const headerRef = useRef<HTMLElement>(null);
+  const mobileNavRef = useRef<HTMLDivElement>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Mobile menu stagger animation
+  useEffect(() => {
+    const nav = mobileNavRef.current;
+    if (!nav) return;
+    const links = nav.querySelectorAll('.prismatic-dot');
+    if (mobileMenuOpen) {
+      gsap.fromTo(
+        links,
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.08, ease: "expo.out", duration: 0.8, overwrite: true }
+      );
+    } else {
+      gsap.to(links, { y: 20, opacity: 0, duration: 0.3, ease: "power2.in", overwrite: true });
+    }
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -137,8 +154,10 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden text-white relative w-8 h-8 flex items-center justify-center hover:bg-white/5 rounded-full transition-colors z-50"
-            aria-label="Open menu"
+            className="md:hidden text-white relative w-11 h-11 flex items-center justify-center hover:bg-white/5 rounded-full transition-colors z-50 font-sans"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <div className="relative w-5 h-5 flex flex-col items-center justify-center gap-1">
@@ -151,7 +170,10 @@ export default function Header() {
       </header>
 
       {/* Mobile Fullscreen Menu */}
-      <div 
+      <div
+        ref={mobileNavRef}
+        id="mobile-navigation"
+        aria-hidden={!mobileMenuOpen}
         className={`fixed inset-0 z-40 bg-black/90 backdrop-blur-xl flex flex-col items-center justify-center transition-all duration-500 ease-out-expo ${mobileMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`}
       >
         <nav className="flex flex-col items-center gap-8">

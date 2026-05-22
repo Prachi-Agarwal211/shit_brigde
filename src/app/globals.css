@@ -56,17 +56,17 @@ body {
 
 :root {
   /* Base */
-  --black: #050505;
-  --surface-1: #0a0a0a;      /* page bg */
-  --surface-2: #0f0f0f;      /* cards */
-  --surface-3: #141414;      /* hover states */
-  --border: rgba(255,255,255,0.06);
-  --border-hover: rgba(0,255,135,0.2);
+  --black: #09090b;
+  --surface-1: #09090b;      /* page bg */
+  --surface-2: #111113;      /* cards */
+  --surface-3: #18181b;      /* hover states */
+  --border: rgba(255,255,255,0.07);
+  --border-hover: rgba(0,255,135,0.25);
 
   /* Accents — refined, not neon */
   --green: #00ff87;           /* primary CTA, labels */
   --green-dim: #00c46a;       /* text on dark, less harsh */
-  --green-glow: rgba(0,255,135,0.12);  /* glow backgrounds */
+  --green-glow: rgba(0,255,135,0.15);  /* glow backgrounds */
   --ember: #f97316;           /* secondary — use SPARINGLY */
   --ember-dim: rgba(249,115,22,0.15);
 
@@ -78,6 +78,46 @@ body {
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.06);
   --glass-highlight: rgba(255, 255, 255, 0.1);
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
+/* Animated Conic Border Search Bar */
+.search-conic-border {
+  position: relative;
+  background: #111113;
+  border-radius: 9999px;
+  z-index: 1;
+}
+
+.search-conic-border::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 9999px;
+  background: conic-gradient(from var(--angle), #00ff87, #f97316, #00ff87);
+  z-index: -1;
+  animation: spin 3.5s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: transform;
+}
+
+.search-conic-border.focused::before {
+  opacity: 1;
 }
 
 /* ============================================
@@ -171,9 +211,9 @@ body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    0 2px 8px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255,255,255,0.08);
+    0 0 0 1px rgba(0,255,135,0.15),
+    0 4px 24px rgba(0,255,135,0.08),
+    0 1px 2px rgba(0,0,0,0.5);
 }
 
 .bento-card::before {
@@ -196,10 +236,9 @@ body {
   transform: translateY(-4px);
   border-color: rgba(255, 255, 255, 0.2);
   box-shadow:
-    0 32px 64px rgba(0, 0, 0, 0.5),
-    0 8px 24px rgba(0, 0, 0, 0.3),
-    0 0 40px rgba(255, 255, 255, 0.04),
-    inset 0 1px 0 rgba(255,255,255,0.12);
+    0 0 0 1px rgba(0,255,135,0.3),
+    0 8px 40px rgba(0,255,135,0.18),
+    0 32px 64px rgba(0, 0, 0, 0.5);
 }
 
 /* ============================================
@@ -737,7 +776,7 @@ body {
   background:
     radial-gradient(ellipse 60% 60% at 15% 30%, rgba(0,255,135,0.07) 0%, transparent 50%),
     radial-gradient(ellipse 50% 50% at 85% 25%, rgba(249,115,22,0.06) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 50% at 50% 80%, rgba(99,102,241,0.05) 0%, transparent 50%);
+    radial-gradient(ellipse 50% 50% at 50% 80%, rgba(0,255,135,0.04) 0%, transparent 50%);
 }
 
 /* ============================================
