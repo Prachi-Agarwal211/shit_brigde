@@ -9,7 +9,9 @@ export default function Preloader() {
   useEffect(() => {
     // Skip if already visited this session
     if (typeof window !== "undefined" && sessionStorage.getItem("shipbridge-loaded")) {
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 0);
       return;
     }
 

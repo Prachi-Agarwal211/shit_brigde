@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState, useMemo, useCallback } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 
 interface Testimonial {
@@ -174,10 +175,13 @@ export default function CircularTestimonials({
         {/* Image carousel */}
         <div ref={imageContainerRef} className="relative w-full h-[20rem] md:h-[26rem]">
           {testimonials.map((testimonial, index) => (
-            <img
+            <Image
               key={testimonial.src}
               src={testimonial.src}
               alt={testimonial.name}
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority={index === 0}
               className="absolute w-full h-full object-cover rounded-2xl shadow-xl"
               data-index={index}
               style={getImageStyle(index)}

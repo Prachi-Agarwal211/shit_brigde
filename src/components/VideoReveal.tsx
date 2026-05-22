@@ -196,7 +196,7 @@ export default function VideoReveal() {
       >
         <div className="inline-block px-6 py-4 rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-xl shadow-lg">
           <p className="italic text-lg md:text-2xl text-white/60 leading-tight">
-            // AI-Powered
+            {"// AI-Powered"}
           </p>
           <p className="text-xl md:text-3xl font-bold text-white/90 leading-tight -mt-1">
             Pan-India Shipping

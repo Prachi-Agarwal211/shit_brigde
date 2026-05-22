@@ -60,10 +60,14 @@ export const metadata: Metadata = {
     description: "AI-powered shipping platform for Indian D2C brands, SMEs and marketplace sellers. Multi-courier automation, COD, real-time tracking, returns management.",
     images: ["/og-image.svg"],
   },
-  // Icons (optional)
+  // Icons
   icons: {
-    icon: "/og-image.svg",
-    shortcut: "/og-image.svg",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
   },
 };
 

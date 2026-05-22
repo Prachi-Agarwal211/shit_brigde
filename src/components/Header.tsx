@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import logo from "../../public/logo_new.png";
@@ -13,9 +14,26 @@ if (typeof window !== "undefined") {
 }
 
 export default function Header() {
+  const pathname = usePathname();
+
   const headerRef = useRef<HTMLElement>(null);
   const mobileNavRef = useRef<HTMLDivElement>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const checkAuth = () => {
+      if (typeof window !== "undefined") {
+        const auth = sessionStorage.getItem("shipbridge-auth");
+        setIsAuthenticated(auth === "true");
+      }
+    };
+    checkAuth();
+    window.addEventListener("shipbridge-auth-change", checkAuth);
+    return () => {
+      window.removeEventListener("shipbridge-auth-change", checkAuth);
+    };
+  }, []);
 
   // Mobile menu stagger animation
   useEffect(() => {
@@ -81,6 +99,8 @@ export default function Header() {
     return () => ctx.revert();
   }, []);
 
+  if (pathname === "/chat") return null;
+
   return (
     <>
       <ScrollProgress />
@@ -139,6 +159,18 @@ export default function Header() {
               </Link>
             </div>
             <div className="chromatic-ring rounded-full px-3 py-1">
+              <Link href="/franchise" className="nav-link text-white/60 hover:text-white transition-all text-[10px] tracking-[0.15em] uppercase relative group">
+                Franchise
+                <div className="absolute -bottom-2 left-0 h-px bg-gradient-to-r from-transparent via-[#00ff87]/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-500" />
+              </Link>
+            </div>
+            <div className="chromatic-ring rounded-full px-3 py-1">
+              <Link href="/orders" className="nav-link text-white/70 hover:text-[#00ff87] transition-all text-[10px] tracking-[0.15em] uppercase font-medium relative group">
+                Orders Hub
+                <div className="absolute -bottom-2 left-0 h-px bg-gradient-to-r from-transparent via-[#00ff87]/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-500" />
+              </Link>
+            </div>
+            <div className="chromatic-ring rounded-full px-3 py-1">
               <Link href="/about" className="nav-link text-white/70 hover:text-[#00ff87] transition-all text-[10px] tracking-[0.15em] uppercase font-medium relative group">
                 About
                 <div className="absolute -bottom-2 left-0 h-px bg-gradient-to-r from-transparent via-[#00ff87]/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-500" />
@@ -151,6 +183,17 @@ export default function Header() {
               </Link>
             </div>
           </nav>
+
+          {/* AI Console CTA Button - Desktop */}
+          <div className="hidden md:block">
+            <Link
+              href={isAuthenticated ? "/chat" : "/login"}
+              className="px-5 py-2.5 rounded-full text-[10px] tracking-[0.18em] uppercase font-bold transition-all duration-300 bg-white/5 border border-white/10 hover:border-[#00ff87]/50 hover:bg-[#00ff87]/10 hover:text-[#00ff87] hover:shadow-[0_0_20px_rgba(0,255,135,0.25)] flex items-center gap-1.5"
+            >
+              <span className={`w-1.5 h-1.5 rounded-full ${isAuthenticated ? 'bg-[#00ff87] animate-pulse' : 'bg-white/40'}`} />
+              {isAuthenticated ? "AI Console" : "Client Portal"}
+            </Link>
+          </div>
 
           {/* Mobile Menu Button */}
           <button 
@@ -203,6 +246,16 @@ export default function Header() {
             </Link>
           </div>
           <div className="prismatic-dot">
+            <Link href="/franchise" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
+              Franchise
+            </Link>
+          </div>
+          <div className="prismatic-dot">
+            <Link href="/orders" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
+              Orders Hub
+            </Link>
+          </div>
+          <div className="prismatic-dot">
             <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
               About
             </Link>
@@ -210,6 +263,12 @@ export default function Header() {
           <div className="prismatic-dot">
             <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
               Contact
+            </Link>
+          </div>
+          <div className="prismatic-dot mt-4">
+            <Link href={isAuthenticated ? "/chat" : "/login"} onClick={() => setMobileMenuOpen(false)} className="text-3xl font-bold text-[#00ff87] hover:text-white transition-colors flex items-center gap-2">
+              <span className={`w-2.5 h-2.5 rounded-full ${isAuthenticated ? 'bg-[#00ff87] animate-pulse' : 'bg-white/40'}`} />
+              {isAuthenticated ? "AI Console" : "Client Portal"}
             </Link>
           </div>
         </nav>

@@ -8,7 +8,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import logo from "../../public/logo_new.png";
 
 // Components
-import TextReveal from "@/components/TextReveal";
 import HorizontalMarquee from "@/components/HorizontalMarquee";
 import VideoReveal from "@/components/VideoReveal";
 import DashboardMockup from "@/components/DashboardMockup";
@@ -20,39 +19,6 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// Icons with path animations
-const TruckIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path className="animate-path" d="M8 19h8m-8 0a2 2 0 100-4 2 2 0 000 4zm8 0a2 2 0 100-4 2 2 0 000 4zm-8-4H5a2 2 0 01-2-2V7a2 2 0 012-2h10a2 2 0 012 2v2m4 0h-3v4.5M17 9h4l1 4v4h-2"/>
-  </svg>
-);
-const WarehouseIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path className="animate-path" d="M3 21h18M4 21V8l8-5 8 5v13M9 21V12h6v9"/>
-  </svg>
-);
-const GlobeIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10"/>
-    <path className="animate-path" d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
-  </svg>
-);
-const PinIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path className="animate-path" d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-    <circle cx="12" cy="10" r="3"/>
-  </svg>
-);
-const ChartIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path className="animate-path" d="M18 20V10M12 20V4M6 20v-6"/>
-  </svg>
-);
-const SupportIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path className="animate-path" d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
-  </svg>
-);
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -71,12 +37,13 @@ export default function Home() {
 
     // Bento card mouse tracking
     const onMouseMove = (e: MouseEvent) => {
-      document.querySelectorAll('.bento-card').forEach((card: any) => {
-        const rect = card.getBoundingClientRect();
+      document.querySelectorAll('.bento-card').forEach((card) => {
+        const htmlCard = card as HTMLElement;
+        const rect = htmlCard.getBoundingClientRect();
         const x = ((e.clientX - rect.left) / rect.width) * 100;
         const y = ((e.clientY - rect.top) / rect.height) * 100;
-        card.style.setProperty('--mouse-x', `${x}%`);
-        card.style.setProperty('--mouse-y', `${y}%`);
+        htmlCard.style.setProperty('--mouse-x', `${x}%`);
+        htmlCard.style.setProperty('--mouse-y', `${y}%`);
       });
     };
 

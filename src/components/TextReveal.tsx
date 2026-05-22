@@ -42,7 +42,7 @@ export default function TextReveal({ text, className = "", elementType: Componen
   }, []);
 
   const words = text.split(" ");
-  const Tag = Component as any;
+  const Tag = Component;
 
   return (
     <Tag ref={containerRef} className={`text-reveal-char ${className}`}>

@@ -8,7 +8,9 @@ export default function BackgroundPaperShaders() {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    setMounted(true);
+    setTimeout(() => {
+      setMounted(true);
+    }, 0);
 
     const handleVisibility = () => {
       setIsVisible(!document.hidden);
