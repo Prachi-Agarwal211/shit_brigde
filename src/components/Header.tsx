@@ -135,38 +135,14 @@ export default function Header() {
               </Link>
             </div>
             <div className="chromatic-ring rounded-full px-3 py-1">
-              <Link href="/how-it-works" className="nav-link text-white/60 hover:text-white transition-all text-[10px] tracking-[0.15em] uppercase relative group">
-                How It Works
-                <div className="absolute -bottom-2 left-0 h-px bg-gradient-to-r from-transparent via-[#00ff87]/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-500" />
-              </Link>
-            </div>
-            <div className="chromatic-ring rounded-full px-3 py-1">
-              <Link href="/integrations" className="nav-link text-white/60 hover:text-white transition-all text-[10px] tracking-[0.15em] uppercase relative group">
-                Integrations
-                <div className="absolute -bottom-2 left-0 h-px bg-gradient-to-r from-transparent via-[#00ff87]/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-500" />
-              </Link>
-            </div>
-            <div className="chromatic-ring rounded-full px-3 py-1">
               <Link href="/faq" className="nav-link text-white/60 hover:text-white transition-all text-[10px] tracking-[0.15em] uppercase relative group">
                 FAQ
                 <div className="absolute -bottom-2 left-0 h-px bg-gradient-to-r from-transparent via-[#00ff87]/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-500" />
               </Link>
             </div>
             <div className="chromatic-ring rounded-full px-3 py-1">
-              <Link href="/pricing" className="nav-link text-white/60 hover:text-white transition-all text-[10px] tracking-[0.15em] uppercase relative group">
-                Pricing
-                <div className="absolute -bottom-2 left-0 h-px bg-gradient-to-r from-transparent via-[#00ff87]/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-500" />
-              </Link>
-            </div>
-            <div className="chromatic-ring rounded-full px-3 py-1">
               <Link href="/franchise" className="nav-link text-white/60 hover:text-white transition-all text-[10px] tracking-[0.15em] uppercase relative group">
                 Franchise
-                <div className="absolute -bottom-2 left-0 h-px bg-gradient-to-r from-transparent via-[#00ff87]/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-500" />
-              </Link>
-            </div>
-            <div className="chromatic-ring rounded-full px-3 py-1">
-              <Link href="/orders" className="nav-link text-white/70 hover:text-[#00ff87] transition-all text-[10px] tracking-[0.15em] uppercase font-medium relative group">
-                Orders Hub
                 <div className="absolute -bottom-2 left-0 h-px bg-gradient-to-r from-transparent via-[#00ff87]/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-500" />
               </Link>
             </div>
@@ -184,16 +160,7 @@ export default function Header() {
             </div>
           </nav>
 
-          {/* AI Console CTA Button - Desktop */}
-          <div className="hidden md:block">
-            <Link
-              href={isAuthenticated ? "/chat" : "/login"}
-              className="px-5 py-2.5 rounded-full text-[10px] tracking-[0.18em] uppercase font-bold transition-all duration-300 bg-white/5 border border-white/10 hover:border-[#00ff87]/50 hover:bg-[#00ff87]/10 hover:text-[#00ff87] hover:shadow-[0_0_20px_rgba(0,255,135,0.25)] flex items-center gap-1.5"
-            >
-              <span className={`w-1.5 h-1.5 rounded-full ${isAuthenticated ? 'bg-[#00ff87] animate-pulse' : 'bg-white/40'}`} />
-              {isAuthenticated ? "AI Console" : "Client Portal"}
-            </Link>
-          </div>
+
 
           {/* Mobile Menu Button */}
           <button 
@@ -226,33 +193,13 @@ export default function Header() {
             </Link>
           </div>
           <div className="prismatic-dot">
-            <Link href="/how-it-works" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
-              How It Works
-            </Link>
-          </div>
-          <div className="prismatic-dot">
-            <Link href="/integrations" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
-              Integrations
-            </Link>
-          </div>
-          <div className="prismatic-dot">
             <Link href="/faq" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
               FAQ
             </Link>
           </div>
           <div className="prismatic-dot">
-            <Link href="/pricing" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
-              Pricing
-            </Link>
-          </div>
-          <div className="prismatic-dot">
             <Link href="/franchise" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
               Franchise
-            </Link>
-          </div>
-          <div className="prismatic-dot">
-            <Link href="/orders" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
-              Orders Hub
             </Link>
           </div>
           <div className="prismatic-dot">
@@ -263,12 +210,6 @@ export default function Header() {
           <div className="prismatic-dot">
             <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
               Contact
-            </Link>
-          </div>
-          <div className="prismatic-dot mt-4">
-            <Link href={isAuthenticated ? "/chat" : "/login"} onClick={() => setMobileMenuOpen(false)} className="text-3xl font-bold text-[#00ff87] hover:text-white transition-colors flex items-center gap-2">
-              <span className={`w-2.5 h-2.5 rounded-full ${isAuthenticated ? 'bg-[#00ff87] animate-pulse' : 'bg-white/40'}`} />
-              {isAuthenticated ? "AI Console" : "Client Portal"}
             </Link>
           </div>
         </nav>

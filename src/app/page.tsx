@@ -509,7 +509,7 @@ export default function Home() {
             <div>
               <h5 className="text-[10px] uppercase tracking-[0.3em] text-white/45 mb-8 font-bold">Platform</h5>
               <ul className="space-y-4">
-                {['How It Works', 'Integrations', 'Tracking', 'Pricing'].map(item => (
+                {['Tracking', 'FAQ'].map(item => (
                   <li key={item}><Link href={`/${item.toLowerCase().replace(/\s+/g, '-')}`} className="text-white/45 hover:text-white/80 transition-colors text-sm font-light">{item}</Link></li>
                 ))}
               </ul>
