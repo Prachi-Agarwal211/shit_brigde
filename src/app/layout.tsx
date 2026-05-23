@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Preloader from "@/components/Preloader";
 import BackgroundPaperShaders from "@/components/BackgroundPaperShaders";
+import WhatsAppFloating from "@/components/WhatsAppFloating";
 
 // Google Fonts - Clean Sans
 import { Inter_Tight } from "next/font/google";
@@ -115,6 +116,7 @@ export default function RootLayout({
         <BackgroundPaperShaders />
         <Preloader />
         <Header />
+        <WhatsAppFloating />
         {children}
       </body>
     </html>

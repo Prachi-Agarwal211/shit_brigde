@@ -1,117 +1,81 @@
 "use client";
+
 import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 export default function DashboardMockup() {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const glareRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          cardRef.current?.querySelectorAll('.db-progress-bar')
-            .forEach(el => el.classList.add('animate'));
+    const ctx = gsap.context(() => {
+      // Animate data bars in the mockup
+      gsap.from(".mockup-bar", {
+        scaleX: 0,
+        duration: 1.5,
+        stagger: 0.2,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
         }
-      },
-      { threshold: 0.3 }
-    );
-    if (cardRef.current) observer.observe(cardRef.current);
-
-    return () => observer.disconnect();
+      });
+    }, containerRef);
+    return () => ctx.revert();
   }, []);
 
-  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current || !glareRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const px = (x / rect.width) * 100;
-    const py = (y / rect.height) * 100;
-    glareRef.current.style.setProperty('--x', `${px}%`);
-    glareRef.current.style.setProperty('--y', `${py}%`);
-  };
-
   return (
-    <div ref={cardRef} onMouseMove={onMouseMove} className="card-glow-brand p-6 md:p-8 w-full max-w-xl mx-auto lg:mx-0 relative overflow-hidden group">
-      {/* Moving Glass Reflection */}
-      <div 
-        ref={glareRef}
-        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10"
-        style={{
-          background: `radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.06) 0%, transparent 60%)`
-        }}
-      />
-      
-      {/* Window bar */}
-      <div className="flex items-center gap-2 mb-6 pb-4 border-b border-white/5 font-sans">
-        <div className="flex gap-1.5">
-          <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-          <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
-          <div className="w-3 h-3 rounded-full bg-[#28c840]" />
-        </div>
-        <span className="text-xs text-white/30 tracking-widest ml-2 uppercase">ShipBridge · Live Dashboard</span>
-        <div className="ml-auto flex items-center gap-1.5">
-          <div className="w-1.5 h-1.5 rounded-full bg-[#00ff87] animate-pulse" />
-          <span className="text-[10px] text-[#00ff87] font-semibold">Live</span>
-        </div>
-      </div>
-
-      {/* Metrics */}
-      <div className="space-y-5 mb-6 font-sans">
+    <div ref={containerRef} className="w-full h-full p-6 flex flex-col gap-6">
+      {/* Top Stats Row */}
+      <div className="grid grid-cols-3 gap-4">
         {[
-          { label: "SLA Delivery Success", value: "99.2%", width: "0.992", isOrange: false },
-          { label: "COD D+2 Remittance Rate", value: "95.0%", width: "0.95", isOrange: false },
-          { label: "Average RTO Reduction", value: "88.6%", width: "0.886", isOrange: true },
-        ].map((metric, i) => (
-          <div key={i}>
-            <div className="flex justify-between mb-1.5">
-              <span className="text-xs text-white/40 uppercase tracking-wider">{metric.label}</span>
-              <span className={`text-xs font-bold font-mono ${metric.isOrange ? "text-[#f97316]" : "text-[#00ff87]"}`}>{metric.value}</span>
-            </div>
-            <div className="h-[3px] bg-white/5 rounded-full overflow-hidden">
-              <div 
-                className="db-progress-bar h-full rounded-full"
-                style={{ 
-                  '--target-scale': metric.width,
-                  background: metric.isOrange 
-                    ? "linear-gradient(90deg, #f97316, #ff8c42)" 
-                    : "linear-gradient(90deg, #00ff87, #00c46a)" 
-                } as React.CSSProperties}
-              />
-            </div>
+          { label: "Throughput", val: "1.2k/hr", color: "#00ff87" },
+          { label: "Active Nodes", val: "142", color: "#ffffff" },
+          { label: "Avg Latency", val: "12ms", color: "#f97316" }
+        ].map((s, i) => (
+          <div key={i} className="holo-glass p-3 rounded-lg border-white/5 flex flex-col gap-1">
+            <span className="text-[8px] uppercase tracking-widest text-white/30 font-mono">{s.label}</span>
+            <span className="text-sm font-bold font-mono" style={{ color: s.color }}>{s.val}</span>
           </div>
         ))}
       </div>
 
-      {/* Sparkline SVG */}
-      <div className="bg-white/2 rounded-xl p-4 mb-4 border border-white/5 font-sans">
-        <div className="flex justify-between items-center mb-3">
-          <span className="text-[10px] text-white/40 uppercase tracking-wider">Shipments Processed</span>
-          <span className="text-[10px] text-[#00ff87] font-mono">↑ 12.4% MoM</span>
+      {/* Main Content Area */}
+      <div className="flex-1 holo-glass rounded-xl border-white/10 p-4 flex flex-col gap-4">
+        <div className="flex justify-between items-center border-b border-white/5 pb-2">
+          <span className="text-[10px] font-mono text-[#00ff87]">LIVE_TELEMETRY.STREAM</span>
+          <div className="flex gap-1">
+            <div className="w-1.5 h-1.5 rounded-full bg-[#00ff87] animate-pulse" />
+            <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
+            <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
+          </div>
         </div>
-        <svg viewBox="0 0 200 50" className="w-full h-12">
-          <defs>
-            <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#00ff87" stopOpacity="0.4"/>
-              <stop offset="100%" stopColor="#00ff87" stopOpacity="0"/>
-            </linearGradient>
-          </defs>
-          <path d="M0,40 L20,35 L40,38 L60,28 L80,30 L100,20 L120,22 L140,15 L160,10 L180,12 L200,5" 
-                fill="none" stroke="#00ff87" strokeWidth="1.5" strokeLinecap="round"/>
-          <path d="M0,40 L20,35 L40,38 L60,28 L80,30 L100,20 L120,22 L140,15 L160,10 L180,12 L200,5 L200,50 L0,50 Z"
-                fill="url(#sparkGrad)" opacity="0.5"/>
-        </svg>
-      </div>
+        
+        {/* Animated Bars */}
+        <div className="space-y-4 py-2">
+          {[
+            { label: "DELHIVERY_NODE", pct: "w-[92%]", color: "bg-[#00ff87]" },
+            { label: "BLUEDART_AIR", pct: "w-[78%]", color: "bg-white/60" },
+            { label: "XPRESSBEES_LTL", pct: "w-[85%]", color: "bg-[#00ff87]" },
+            { label: "ECOM_EXPRESS_COD", pct: "w-[64%]", color: "bg-[#f97316]" }
+          ].map((bar, i) => (
+            <div key={i} className="space-y-1.5">
+              <div className="flex justify-between text-[8px] font-mono text-white/40 tracking-tighter">
+                <span>{bar.label}</span>
+                <span>{bar.pct.replace('w-[', '').replace('%]', '')}% CAP</span>
+              </div>
+              <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                <div className={`mockup-bar h-full ${bar.color} ${bar.pct} origin-left`} />
+              </div>
+            </div>
+          ))}
+        </div>
 
-      {/* Bottom stats */}
-      <div className="grid grid-cols-2 gap-3 font-sans">
-        <div className="bg-white/3 rounded-xl p-4 border border-white/5">
-          <p className="text-[10px] text-white/30 uppercase tracking-wider mb-1">COD Remitted Today</p>
-          <p className="text-xl font-bold text-white font-mono">₹28.4L</p>
-        </div>
-        <div className="bg-white/3 rounded-xl p-4 border border-[#00ff87]/10">
-          <p className="text-[10px] text-white/30 uppercase tracking-wider mb-1">RTO Losses Prevented</p>
-          <p className="text-xl font-bold text-[#00ff87] font-mono">₹1.82L</p>
+        {/* Console Log Area */}
+        <div className="mt-auto bg-black/40 rounded-lg p-3 font-mono text-[8px] text-[#00ff87]/60 leading-tight">
+          <div>[INIT] Synchronizing Carrier_Map_v4...</div>
+          <div>[AUTH] API_NODE_JAIPUR: Verified.</div>
+          <div>[EXEC] Routing Order_#42921 via BLUEDART_AIR...</div>
+          <div className="animate-pulse">_</div>
         </div>
       </div>
     </div>

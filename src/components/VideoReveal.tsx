@@ -11,11 +11,7 @@ if (typeof window !== "undefined") {
 export default function VideoReveal() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const pillRef = useRef<HTMLDivElement>(null);
-  const wordmarkRef = useRef<HTMLHeadingElement>(null);
-  const descriptorRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
-  const scrollIndicatorRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
@@ -31,198 +27,126 @@ export default function VideoReveal() {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      const wordmark = wordmarkRef.current;
-      const descriptor = descriptorRef.current;
-      const video = videoRef.current;
-      const pill = pillRef.current;
-      const stats = statsRef.current;
-      const scrollInd = scrollIndicatorRef.current;
+      // Entry Animation
+      const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+      
+      tl.fromTo(".hero-data-node", 
+        { opacity: 0, x: -20 }, 
+        { opacity: 1, x: 0, stagger: 0.1, duration: 1 }, 0.5
+      )
+      .fromTo(".hero-main-title", 
+        { filter: "blur(20px)", opacity: 0, y: 40 }, 
+        { filter: "blur(0px)", opacity: 1, y: 0, duration: 1.5 }, 0.8
+      )
+      .fromTo(".hero-description", 
+        { opacity: 0, y: 20 }, 
+        { opacity: 1, y: 0, duration: 1 }, 1.2
+      )
+      .fromTo(".hero-cta-group", 
+        { opacity: 0, scale: 0.9 }, 
+        { opacity: 1, scale: 1, duration: 0.8 }, 1.4
+      );
 
-      // Entry timeline
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      // Scroll Parallax
+      gsap.to(".hero-main-title", {
+        y: -60,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom center",
+          scrub: 1.5,
+        }
+      });
 
-      if (pill) {
-        tl.fromTo(pill, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, 0.3);
-      }
-
-      if (wordmark) {
-        tl.fromTo(wordmark, { filter: "blur(12px)", opacity: 0 }, { filter: "blur(0px)", opacity: 1, duration: 1.4 }, 0.6);
-      }
-
-      if (descriptor) {
-        tl.fromTo(descriptor, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, 1.2);
-      }
-
-      if (stats) {
-        tl.fromTo(stats, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, 1.4);
-      }
-
-      if (scrollInd) {
-        tl.fromTo(scrollInd, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, 1.6);
-      }
-
-      // Scroll parallax
-      if (wordmark) {
-        gsap.to(wordmark, {
-          y: -80,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: 2,
-          }
-        });
-      }
-
-      if (descriptor) {
-        gsap.to(descriptor, {
-          y: -120,
-          opacity: 0,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "+=400",
-            scrub: 1.5,
-          }
-        });
-      }
-
-      if (video) {
-        gsap.to(video, {
-          scale: 1.08,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: 2,
-          }
-        });
-      }
-
-      if (pill) {
-        gsap.to(pill, {
-          y: -40,
-          opacity: 0,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "+=200",
-            scrub: 1.5,
-          }
-        });
-      }
-
-      if (scrollInd) {
-        gsap.to(scrollInd, {
-          opacity: 0,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top +=100",
-            end: "+=200",
-            scrub: 1.5,
-          }
-        });
-      }
+      gsap.to(".video-bg", {
+        scale: 1.05,
+        filter: "brightness(0.4)",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+      
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full h-screen overflow-hidden bg-[#030303]">
+    <section ref={sectionRef} className="relative w-full h-screen overflow-hidden bg-transparent">
+      <div className="logistics-grid absolute inset-0 opacity-50" />
+      <div className="scanning-line" />
+      
       {/* Loading overlay */}
-      <div
-        className={`absolute inset-0 z-20 bg-[#030303] transition-opacity duration-700 ${videoReady ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
-      />
+      <div className={`absolute inset-0 z-50 bg-black transition-opacity duration-1000 ${videoReady ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} />
 
-      {/* Video */}
+      {/* Background Video */}
       <video
         ref={videoRef}
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover will-change-transform"
+        className="video-bg absolute inset-0 w-full h-full object-cover opacity-40"
         poster="/video-poster.svg"
       >
         <source src="/km_20260506_1080p_30f_20260506_205259.mp4" type="video/mp4" />
       </video>
 
-      {/* Subtle vignette on edges only — keeps center clean */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.6)_100%)] pointer-events-none z-10" />
+      {/* Overlays - more subtle to see background mesh */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-10" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)] z-10" />
 
-      {/* Bottom gradient to next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-[30vh] bg-gradient-to-t from-[#030303] to-transparent pointer-events-none z-10" />
-
-      {/* Content */}
-      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center">
-        {/* Top pill */}
-        <div ref={pillRef} className="mb-10 opacity-0">
-          <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/10 bg-white/[0.04] text-[9px] tracking-[0.25em] uppercase text-white/50 font-medium backdrop-blur-xl shadow-lg">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00ff87] animate-pulse" />
-            AI · Logistics · Platform · 2026
-          </span>
+      {/* Main Content */}
+      <div ref={contentRef} className="relative z-20 h-full flex flex-col items-center justify-center px-6">
+        
+        {/* Terminal Data Header */}
+        <div className="absolute top-32 left-6 md:left-12 flex flex-col gap-2">
+          {[
+            "STATUS: OPERATIONAL",
+            "LATENCY: 14MS",
+            "NODES: 19,402",
+            "LOC: 28.6139° N, 77.2090° E"
+          ].map((text, i) => (
+            <div key={i} className="hero-data-node flex items-center gap-3">
+              <div className="w-1 h-1 bg-[#00ff87] shadow-[0_0_8px_#00ff87]" />
+              <span className="text-[10px] text-terminal font-bold tracking-[0.2em]">{text}</span>
+            </div>
+          ))}
         </div>
 
-        {/* Premium wordmark — glass white aesthetic */}
-        <h1
-          ref={wordmarkRef}
-          className="select-none text-center opacity-0 relative"
-          style={{
-            fontSize: 'clamp(3.5rem, 14vw, 12rem)',
-            letterSpacing: '-0.04em',
-            fontWeight: 200,
-            lineHeight: 0.9,
-          }}
-        >
-          <span
-            className="relative block"
-            style={{
-              whiteSpace: 'nowrap',
-              color: '#ffffff',
-              opacity: 0.85,
-              textShadow: '0 0 80px rgba(0,0,0,0.6), 0 4px 32px rgba(0,0,0,0.3)',
-            }}
-          >
+        {/* Hero Title */}
+        <div className="text-center max-w-6xl">
+          <h1 className="hero-main-title heading-huge mb-6">
             SHIP BRIDGE
-          </span>
-        </h1>
-      </div>
-
-      {/* Bottom-left descriptor — glass */}
-      <div
-        ref={descriptorRef}
-        className="absolute bottom-12 left-6 md:left-12 z-20 opacity-0"
-      >
-        <div className="inline-block px-6 py-4 rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-xl shadow-lg">
-          <p className="italic text-lg md:text-2xl text-white/60 leading-tight">
-            {"// AI-Powered"}
+          </h1>
+          <p className="hero-description text-xl md:text-2xl text-white/60 font-light tracking-tight max-w-2xl mx-auto mb-12">
+            The intelligent operating system for <span className="text-white font-medium">Pan-India logistics</span>. Precision delivery, automated at scale.
           </p>
-          <p className="text-xl md:text-3xl font-bold text-white/90 leading-tight -mt-1">
-            Pan-India Shipping
-          </p>
+          
+          <div className="hero-cta-group flex flex-col sm:flex-row gap-6 justify-center">
+            <button className="btn-precision">Initialize Shipping</button>
+            <button className="btn-outline">View Node Map</button>
+          </div>
         </div>
-      </div>
 
-      {/* Bottom-right stats */}
-      <div
-        ref={statsRef}
-        className="absolute bottom-12 right-6 md:right-12 z-20 text-right opacity-0 hidden md:block"
-      >
-        <div className="inline-block px-6 py-4 rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-xl shadow-lg">
-          <p className="text-[9px] tracking-[0.3em] uppercase text-white/30 font-medium mb-2">Scope</p>
-          <p className="text-sm font-bold text-white/80">29,000+ Pin Codes</p>
-          <p className="text-sm text-white/50">AI-Native Platform</p>
+        {/* Bottom Status Bar */}
+        <div className="absolute bottom-12 w-full px-6 md:px-12 flex justify-between items-end border-t border-white/5 pt-8">
+          <div className="flex flex-col gap-1">
+            <span className="text-[9px] text-white/30 uppercase tracking-[0.3em]">AI Engine v2.4</span>
+            <div className="flex gap-4">
+              <span className="text-xs font-bold text-[#00ff87]">29k+ PINCODES</span>
+              <span className="text-xs font-bold text-white/60">24/7 MONITORING</span>
+            </div>
+          </div>
+          
+          <div className="flex flex-col items-end gap-2">
+            <div className="scroll-mouse" />
+            <span className="text-[9px] text-white/20 uppercase tracking-[0.4em]">Scroll to Explore</span>
+          </div>
         </div>
-      </div>
-
-      {/* Scroll mouse indicator */}
-      <div
-        ref={scrollIndicatorRef}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-0"
-      >
-        <div className="scroll-mouse" />
-        <span className="text-[9px] tracking-[0.3em] uppercase text-white/20 font-medium">Scroll</span>
       </div>
     </section>
   );

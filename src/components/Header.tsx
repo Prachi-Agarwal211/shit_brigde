@@ -15,87 +15,39 @@ if (typeof window !== "undefined") {
 
 export default function Header() {
   const pathname = usePathname();
-
   const headerRef = useRef<HTMLElement>(null);
-  const mobileNavRef = useRef<HTMLDivElement>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    const checkAuth = () => {
-      if (typeof window !== "undefined") {
-        const auth = sessionStorage.getItem("shipbridge-auth");
-        setIsAuthenticated(auth === "true");
-      }
-    };
-    checkAuth();
-    window.addEventListener("shipbridge-auth-change", checkAuth);
-    return () => {
-      window.removeEventListener("shipbridge-auth-change", checkAuth);
-    };
-  }, []);
-
-  // Mobile menu stagger animation
-  useEffect(() => {
-    const nav = mobileNavRef.current;
-    if (!nav) return;
-    const links = nav.querySelectorAll('.prismatic-dot');
-    if (mobileMenuOpen) {
-      gsap.fromTo(
-        links,
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.08, ease: "expo.out", duration: 0.8, overwrite: true }
-      );
-    } else {
-      gsap.to(links, { y: 20, opacity: 0, duration: 0.3, ease: "power2.in", overwrite: true });
-    }
-  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
         start: "top top",
-        end: "+=30",
+        end: "+=50",
         onUpdate: (self) => {
-          if (self.scroll() > 30) {
+          if (self.scroll() > 50) {
             gsap.to(headerRef.current, {
-              backgroundColor: "rgba(5, 5, 5, 0.6)",
-              backdropFilter: "blur(24px)",
-              borderBottomColor: "transparent",
-              paddingTop: "6px",
-              paddingBottom: "6px",
-              paddingLeft: "6px",
-              paddingRight: "6px",
-              marginLeft: "12px",
-              marginRight: "12px",
-              borderRadius: "9999px",
-              border: "1px solid rgba(255,255,255,0.1)",
-              boxShadow: "0 0 30px rgba(0,0,0,0.4)",
-              duration: 0.5,
+              backgroundColor: "rgba(2, 2, 3, 0.8)",
+              backdropFilter: "blur(20px)",
+              borderBottomColor: "rgba(0, 255, 135, 0.2)",
+              paddingTop: "12px",
+              paddingBottom: "12px",
+              duration: 0.4,
               ease: "power2.out",
             });
           } else {
             gsap.to(headerRef.current, {
-              backgroundColor: "rgba(5, 5, 5, 0)",
+              backgroundColor: "transparent",
               backdropFilter: "blur(0px)",
-              borderBottomColor: "rgba(255,255,255,0)",
+              borderBottomColor: "transparent",
               paddingTop: "24px",
               paddingBottom: "24px",
-              paddingLeft: "0px",
-              paddingRight: "0px",
-              marginLeft: "0px",
-              marginRight: "0px",
-              borderRadius: "0px",
-              border: "0px solid transparent",
-              boxShadow: "0 0 0px rgba(0,0,0,0)",
-              duration: 0.5,
+              duration: 0.4,
               ease: "power2.out",
             });
           }
         },
       });
     }, headerRef);
-
     return () => ctx.revert();
   }, []);
 
@@ -106,113 +58,90 @@ export default function Header() {
       <ScrollProgress />
       <header
         ref={headerRef}
-        className="fixed top-0 left-0 right-0 z-50 transition-all px-3 md:px-6 border-b border-transparent bg-transparent flex justify-center"
-        style={{ minHeight: 48 }}
+        className="fixed top-0 left-0 right-0 z-50 transition-all px-6 md:px-12 border-b border-transparent flex items-center justify-between"
       >
-        <div className="max-w-7xl w-full mx-auto flex items-center justify-between" style={{ minHeight: 48 }}>
+        {/* Logo Terminal */}
+        <Link href="/" className="flex items-center gap-4 group">
+          <div className="relative w-10 h-10 border border-[#00ff87]/30 rounded-lg flex items-center justify-center bg-black overflow-hidden">
+            <Image src={logo} alt="ShipBridge" width={24} height={24} className="object-contain z-10" />
+            <div className="absolute inset-0 bg-[#00ff87]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+          </div>
+          <div className="hidden sm:flex flex-col -gap-1">
+            <span className="text-sm font-bold tracking-tighter text-white">SHIPBRIDGE</span>
+            <span className="text-[8px] font-mono text-[#00ff87] tracking-[0.2em]">OS_v2.4</span>
+          </div>
+        </Link>
 
-          {/* Logo */}
-          <Link href="/" className="flex items-center group relative z-50">
-            <div className="relative" style={{ width: 48, height: 48 }}>
-              <Image
-                src={logo}
-                alt="ShipBridge"
-                fill
-                sizes="48px"
-                className="object-contain"
-                priority
-              />
-              <div className="absolute inset-0 blur-md opacity-0 group-hover:opacity-30 bg-[#00ff87] transition-opacity duration-300" />
-            </div>
-          </Link>
+        {/* Precision Navigation */}
+        <nav className="hidden lg:flex items-center gap-8">
+          {[
+            { label: "Network", href: "/" },
+            { label: "Intelligence", href: "/about" },
+            { label: "Terminal", href: "/faq" },
+            { label: "Partners", href: "/franchise" },
+            { label: "Contact", href: "/contact" }
+          ].map((item) => (
+            <Link 
+              key={item.label} 
+              href={item.href} 
+              className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-white/40 hover:text-[#00ff87] transition-all relative group py-2"
+            >
+              {item.label}
+              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#00ff87] transition-all group-hover:w-full" />
+            </Link>
+          ))}
+        </nav>
 
-          {/* Minimal Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
-            <div className="chromatic-ring rounded-full px-3 py-1">
-              <Link href="/" className="nav-link text-white/60 hover:text-white transition-all text-[10px] tracking-[0.15em] uppercase relative group">
-                Home
-                <div className="absolute -bottom-2 left-0 h-px bg-gradient-to-r from-transparent via-[#00ff87]/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-500" />
-              </Link>
+        {/* Node Access */}
+        <div className="flex items-center gap-6">
+          <div className="hidden md:flex flex-col items-end mr-4">
+            <span className="text-[8px] font-mono text-white/30 uppercase tracking-widest">System Status</span>
+            <div className="flex items-center gap-1.5">
+              <div className="w-1 h-1 rounded-full bg-[#00ff87] animate-pulse" />
+              <span className="text-[9px] font-mono text-[#00ff87] font-bold">OPERATIONAL</span>
             </div>
-            <div className="chromatic-ring rounded-full px-3 py-1">
-              <Link href="/faq" className="nav-link text-white/60 hover:text-white transition-all text-[10px] tracking-[0.15em] uppercase relative group">
-                FAQ
-                <div className="absolute -bottom-2 left-0 h-px bg-gradient-to-r from-transparent via-[#00ff87]/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-500" />
-              </Link>
-            </div>
-            <div className="chromatic-ring rounded-full px-3 py-1">
-              <Link href="/franchise" className="nav-link text-white/60 hover:text-white transition-all text-[10px] tracking-[0.15em] uppercase relative group">
-                Franchise
-                <div className="absolute -bottom-2 left-0 h-px bg-gradient-to-r from-transparent via-[#00ff87]/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-500" />
-              </Link>
-            </div>
-            <div className="chromatic-ring rounded-full px-3 py-1">
-              <Link href="/about" className="nav-link text-white/70 hover:text-[#00ff87] transition-all text-[10px] tracking-[0.15em] uppercase font-medium relative group">
-                About
-                <div className="absolute -bottom-2 left-0 h-px bg-gradient-to-r from-transparent via-[#00ff87]/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-500" />
-              </Link>
-            </div>
-            <div className="chromatic-ring rounded-full px-3 py-1">
-              <Link href="/contact" className="nav-link text-white/70 hover:text-[#00ff87] transition-all text-[10px] tracking-[0.15em] uppercase font-medium relative group">
-                Contact
-                <div className="absolute -bottom-2 left-0 h-px bg-gradient-to-r from-transparent via-[#00ff87]/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-500" />
-              </Link>
-            </div>
-          </nav>
-
-
-
-          {/* Mobile Menu Button */}
+          </div>
+          
           <button 
-            className="md:hidden text-white relative w-11 h-11 flex items-center justify-center hover:bg-white/5 rounded-full transition-colors z-50 font-sans"
-            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-navigation"
+            className="lg:hidden text-white w-10 h-10 border border-white/10 rounded-lg flex items-center justify-center hover:bg-white/5 transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            <div className="relative w-5 h-5 flex flex-col items-center justify-center gap-1">
-              <span className={`w-4 h-[2px] bg-white rounded-full transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-[6px]' : ''}`} />
-              <span className={`w-4 h-[2px] bg-white rounded-full transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`} />
-              <span className={`w-4 h-[2px] bg-white rounded-full transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-[6px]' : ''}`} />
+            <div className="w-5 h-4 flex flex-col justify-between">
+              <span className="w-full h-[1px] bg-white" />
+              <span className="w-2/3 h-[1px] bg-[#00ff87]" />
+              <span className="w-full h-[1px] bg-white" />
             </div>
           </button>
         </div>
       </header>
 
-      {/* Mobile Fullscreen Menu */}
-      <div
-        ref={mobileNavRef}
-        id="mobile-navigation"
-        aria-hidden={!mobileMenuOpen}
-        className={`fixed inset-0 z-40 bg-black/90 backdrop-blur-xl flex flex-col items-center justify-center transition-all duration-500 ease-out-expo ${mobileMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`}
-      >
-        <nav className="flex flex-col items-center gap-8">
-          <div className="prismatic-dot">
-            <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
-              Home
-            </Link>
+      {/* Mobile Terminal Menu */}
+      <div className={`fixed inset-0 z-[100] bg-black transition-transform duration-500 ease-out-expo ${mobileMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+        <div className="h-full flex flex-col p-12 logistics-grid">
+          <div className="flex justify-between items-center mb-20">
+            <span className="text-terminal text-xs">MENU_INITIALIZED</span>
+            <button onClick={() => setMobileMenuOpen(false)} className="text-terminal text-xs">[ CLOSE ]</button>
           </div>
-          <div className="prismatic-dot">
-            <Link href="/faq" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
-              FAQ
-            </Link>
+          <nav className="flex flex-col gap-8">
+            {['Home', 'About', 'FAQ', 'Franchise', 'Contact'].map((item, i) => (
+              <Link 
+                key={item} 
+                href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-4xl font-bold tracking-tighter hover:text-[#00ff87] transition-colors flex items-center gap-4"
+              >
+                <span className="text-xs font-mono text-[#00ff87]">0{i+1}</span>
+                {item}
+              </Link>
+            ))}
+          </nav>
+          <div className="mt-auto pt-12 border-t border-white/10">
+            <p className="text-[10px] font-mono text-white/20 leading-relaxed uppercase tracking-[0.2em]">
+              ShipBridge OS // Global Logistics Network<br/>
+              Last Sync: 0.2ms ago
+            </p>
           </div>
-          <div className="prismatic-dot">
-            <Link href="/franchise" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
-              Franchise
-            </Link>
-          </div>
-          <div className="prismatic-dot">
-            <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
-              About
-            </Link>
-          </div>
-          <div className="prismatic-dot">
-            <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-medium text-white hover:text-[#00ff87] transition-colors">
-              Contact
-            </Link>
-          </div>
-        </nav>
+        </div>
       </div>
     </>
   );
