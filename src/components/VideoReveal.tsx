@@ -27,12 +27,15 @@ export default function VideoReveal() {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Entry Animation
       const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
       
       tl.fromTo(".hero-data-node", 
         { opacity: 0, x: -20 }, 
         { opacity: 1, x: 0, stagger: 0.1, duration: 1 }, 0.5
+      )
+      .fromTo(".hero-pill", 
+        { opacity: 0, y: 20 }, 
+        { opacity: 1, y: 0, duration: 1 }, 0.7
       )
       .fromTo(".hero-main-title", 
         { filter: "blur(20px)", opacity: 0, y: 40 }, 
@@ -47,7 +50,6 @@ export default function VideoReveal() {
         { opacity: 1, scale: 1, duration: 0.8 }, 1.4
       );
 
-      // Scroll Parallax
       gsap.to(".hero-main-title", {
         y: -60,
         scrollTrigger: {
@@ -79,10 +81,8 @@ export default function VideoReveal() {
       <div className="logistics-grid absolute inset-0 opacity-50" />
       <div className="scanning-line" />
       
-      {/* Loading overlay */}
       <div className={`absolute inset-0 z-50 bg-black transition-opacity duration-1000 ${videoReady ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} />
 
-      {/* Background Video */}
       <video
         ref={videoRef}
         autoPlay
@@ -95,56 +95,59 @@ export default function VideoReveal() {
         <source src="/km_20260506_1080p_30f_20260506_205259.mp4" type="video/mp4" />
       </video>
 
-      {/* Overlays - more subtle to see background mesh */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-10" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)] z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/40 z-10" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(0,0,0,0.6)_100%)] z-10" />
 
-      {/* Main Content */}
-      <div ref={contentRef} className="relative z-20 h-full flex flex-col items-center justify-center px-6">
+      <div ref={contentRef} className="relative z-20 h-full flex flex-col items-center justify-center px-6 md:px-12 mt-12 md:mt-0">
         
-        {/* Terminal Data Header */}
-        <div className="absolute top-32 left-6 md:left-12 flex flex-col gap-2">
+        {/* Top Left Stats (Hidden on small mobile to save space) */}
+        <div className="hidden md:flex absolute top-32 left-12 flex-col gap-2">
           {[
-            "STATUS: OPERATIONAL",
-            "LATENCY: 14MS",
-            "NODES: 19,402",
-            "LOC: 28.6139° N, 77.2090° E"
+            "COVERAGE: PAN-INDIA",
+            "FOCUS: D2C · SME · B2B",
+            "CORE: COD & RETURNS",
+            "LOC: BHARAT_NODE"
           ].map((text, i) => (
             <div key={i} className="hero-data-node flex items-center gap-3">
-              <div className="w-1 h-1 bg-[#00ff87] shadow-[0_0_8px_#00ff87]" />
+              <div className="w-1 h-1 bg-[#FF9933] shadow-[0_0_8px_#FF9933]" />
               <span className="text-[10px] text-terminal font-bold tracking-[0.2em]">{text}</span>
             </div>
           ))}
         </div>
 
-        {/* Hero Title */}
-        <div className="text-center max-w-6xl">
-          <h1 className="hero-main-title heading-huge mb-6">
+        {/* Main Content Group */}
+        <div className="text-center max-w-5xl w-full">
+          
+          {/* New India-First Pill */}
+          <div className="hero-pill inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[#FF9933]/30 bg-[#FF9933]/5 backdrop-blur-md mb-8">
+            <div className="w-2 h-2 rounded-full bg-[#FF9933] animate-pulse shadow-[0_0_10px_#FF9933]" />
+            <span className="text-[10px] md:text-xs text-[#FF9933] font-mono tracking-widest uppercase">Shipping Software · Pan-India · D2C · SME · COD</span>
+          </div>
+
+          <h1 className="hero-main-title heading-huge mb-12 text-[clamp(3rem,8vw,8rem)] leading-[0.9]">
             SHIP BRIDGE
           </h1>
-          <p className="hero-description text-xl md:text-2xl text-white/60 font-light tracking-tight max-w-2xl mx-auto mb-12">
-            The intelligent operating system for <span className="text-white font-medium">Pan-India logistics</span>. Precision delivery, automated at scale.
-          </p>
           
-          <div className="hero-cta-group flex flex-col sm:flex-row gap-6 justify-center">
-            <button className="btn-precision">Initialize Shipping</button>
-            <button className="btn-outline">View Node Map</button>
+          <div className="hero-cta-group flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center w-full sm:w-auto">
+            <button className="btn-precision w-full sm:w-auto px-8 py-4">Book a Demo</button>
+            <button className="btn-outline w-full sm:w-auto px-8 py-4">Explore Features</button>
           </div>
         </div>
 
         {/* Bottom Status Bar */}
-        <div className="absolute bottom-12 w-full px-6 md:px-12 flex justify-between items-end border-t border-white/5 pt-8">
+        <div className="absolute bottom-8 md:bottom-12 w-full px-6 md:px-12 flex justify-between items-end border-t border-white/5 pt-6 md:pt-8">
           <div className="flex flex-col gap-1">
-            <span className="text-[9px] text-white/30 uppercase tracking-[0.3em]">AI Engine v2.4</span>
-            <div className="flex gap-4">
-              <span className="text-xs font-bold text-[#00ff87]">29k+ PINCODES</span>
-              <span className="text-xs font-bold text-white/60">24/7 MONITORING</span>
+            <span className="text-[9px] text-white/30 uppercase tracking-[0.3em]">Platform Capabilities</span>
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mt-1">
+              <span className="text-xs font-bold text-[#138808]">29k+ PINCODES</span>
+              <span className="hidden sm:block text-xs font-bold text-white/40">|</span>
+              <span className="text-xs font-bold text-white/60 uppercase">COD & RTO AUTOMATION</span>
             </div>
           </div>
           
           <div className="flex flex-col items-end gap-2">
             <div className="scroll-mouse" />
-            <span className="text-[9px] text-white/20 uppercase tracking-[0.4em]">Scroll to Explore</span>
+            <span className="text-[8px] md:text-[9px] text-white/20 uppercase tracking-[0.4em] hidden md:block">Scroll to Explore</span>
           </div>
         </div>
       </div>

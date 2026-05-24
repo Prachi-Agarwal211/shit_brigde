@@ -25,7 +25,7 @@ export default function HorizontalMarquee() {
                   key={i}
                   className="text-[11px] uppercase tracking-[0.4em] text-white/25 font-bold flex items-center gap-3 cursor-default"
                 >
-                  <span className="text-[#00ff87] text-base opacity-40">⬡</span>
+                  <span className="text-[#138808] text-base opacity-40">⬡</span>
                   {item}
                 </span>
               ))}
@@ -44,7 +44,7 @@ export default function HorizontalMarquee() {
                   key={i}
                   className="text-[11px] uppercase tracking-[0.4em] text-white/20 font-bold flex items-center gap-3 cursor-default"
                 >
-                  <span className="text-[#f97316] text-base opacity-40">⬡</span>
+                  <span className="text-[#FF9933] text-base opacity-40">⬡</span>
                   {item}
                 </span>
               ))}

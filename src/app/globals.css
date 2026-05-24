@@ -20,12 +20,15 @@
   --surface-2: rgba(10, 10, 12, 0.4);
   --surface-3: rgba(18, 18, 21, 0.6);
   
-  --green: #00ff87;
-  --green-bright: #00ffa3;
-  --green-glow: rgba(0, 255, 135, 0.1);
+  --orange: #FF9933;
+  --orange-bright: #FFB366;
+  --orange-glow: rgba(255, 153, 51, 0.2);
   
-  --orange: #f97316;
-  --orange-glow: rgba(249, 115, 22, 0.1);
+  --green: #138808;
+  --green-glow: rgba(19, 136, 8, 0.1);
+  
+  --white: #ffffff;
+  --white-glow: rgba(255, 255, 255, 0.1);
   
   --glass-border: rgba(255, 255, 255, 0.05);
   --glass-bg: rgba(255, 255, 255, 0.01);
@@ -45,8 +48,8 @@ body {
 
 .logistics-grid {
   background-image: 
-    linear-gradient(rgba(0, 255, 135, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 135, 0.015) 1px, transparent 1px);
+    linear-gradient(rgba(255, 153, 51, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 153, 51, 0.015) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
 }
@@ -63,7 +66,7 @@ body {
   position: absolute;
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--green), transparent);
+  background: linear-gradient(90deg, transparent, var(--orange), transparent);
   opacity: 0.05;
   animation: scan 12s linear infinite;
   pointer-events: none;
@@ -94,7 +97,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, transparent 45%, rgba(0, 255, 135, 0.05) 50%, transparent 55%);
+  background: linear-gradient(135deg, transparent 45%, rgba(255, 153, 51, 0.05) 50%, transparent 55%);
   background-size: 200% 200%;
   animation: glint 10s linear infinite;
   pointer-events: none;
@@ -111,8 +114,8 @@ body {
 
 .text-terminal {
   font-family: var(--font-mono);
-  color: var(--green);
-  text-shadow: 0 0 10px var(--green-glow);
+  color: var(--orange);
+  text-shadow: 0 0 10px var(--orange-glow);
   letter-spacing: 0.05em;
 }
 
@@ -148,8 +151,8 @@ body {
 
 .bento-item:hover {
   transform: translateY(-5px) scale(1.01);
-  border-color: var(--green);
-  box-shadow: 0 20px 40px -10px rgba(0, 255, 135, 0.1);
+  border-color: var(--orange);
+  box-shadow: 0 20px 40px -10px rgba(255, 153, 51, 0.1);
 }
 
 /* ============================================
@@ -157,7 +160,7 @@ body {
    ============================================ */
 
 .btn-precision {
-  background: var(--green);
+  background: var(--orange);
   color: var(--black);
   font-weight: 700;
   text-transform: uppercase;
@@ -173,13 +176,13 @@ body {
 
 .btn-precision:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px var(--green-glow);
+  box-shadow: 0 10px 30px var(--orange-glow);
   filter: brightness(1.1);
 }
 
 .btn-outline {
-  border: 1px solid var(--green);
-  color: var(--green);
+  border: 1px solid var(--orange);
+  color: var(--orange);
   font-family: var(--font-mono);
   padding: 1rem 2.5rem;
   border-radius: 0.5rem;
@@ -190,8 +193,8 @@ body {
 }
 
 .btn-outline:hover {
-  background: var(--green-glow);
-  box-shadow: inset 0 0 20px var(--green-glow);
+  background: var(--orange-glow);
+  box-shadow: inset 0 0 20px var(--orange-glow);
 }
 
 /* ============================================
@@ -207,6 +210,19 @@ body {
   animation: float 5s ease-in-out infinite;
 }
 
+/* ============================================
+   PRELOADER
+   ============================================ */
+
+@keyframes preloader-scan {
+  0% { top: -5%; }
+  100% { top: 105%; }
+}
+
+.animate-preloader-scan {
+  animation: preloader-scan 2.5s linear infinite;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 4px;
@@ -215,6 +231,6 @@ body {
   background: var(--black);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--green);
+  background: var(--orange);
   border-radius: 10px;
 }

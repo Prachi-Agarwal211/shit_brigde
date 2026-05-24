@@ -64,7 +64,7 @@ export default function FranchisePage() {
       {/* Hero Section */}
       <section className="relative pt-40 pb-20 px-5 md:pt-52 md:pb-32 md:px-12 flex flex-col items-center text-center overflow-hidden">
         <SectionAurora variant="subtle" />
-        <span className="text-[#00ff87] text-[10px] tracking-[0.3em] uppercase font-bold mb-6 block relative z-10">
+        <span className="text-[#FF9933] text-[10px] tracking-[0.3em] uppercase font-bold mb-6 block relative z-10">
           Become a Partner
         </span>
         <TextReveal 
@@ -90,7 +90,7 @@ export default function FranchisePage() {
             { title: "Revenue Sharing", icon: <CoinsIcon />, desc: "Transparent and highly competitive margins." },
           ].map((benefit, idx) => (
             <div key={idx} className="bento-card group flex flex-col items-start text-left p-8">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#00ff87]/20 to-transparent border border-[#00ff87]/20 flex items-center justify-center text-[#00ff87] mb-6 transition-transform group-hover:scale-110 group-hover:-rotate-3">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FF9933]/20 to-transparent border border-[#FF9933]/20 flex items-center justify-center text-[#FF9933] mb-6 transition-transform group-hover:scale-110 group-hover:-rotate-3">
                 <div className="w-6 h-6">{benefit.icon}</div>
               </div>
               <h3 className="text-xl font-bold mb-3 text-white font-display">{benefit.title}</h3>
@@ -112,8 +112,8 @@ export default function FranchisePage() {
             </h2>
             
             {submitted ? (
-              <div className="bento-card border-[#00ff87]/30 bg-[#064e3b]/10 text-center py-16">
-                <div className="w-20 h-20 rounded-full bg-[#00ff87]/20 flex items-center justify-center text-[#00ff87] mx-auto mb-6">
+              <div className="bento-card border-[#FF9933]/30 bg-[#064e3b]/10 text-center py-16">
+                <div className="w-20 h-20 rounded-full bg-[#FF9933]/20 flex items-center justify-center text-[#FF9933] mx-auto mb-6">
                   <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/></svg>
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">Application Received!</h3>
@@ -124,36 +124,36 @@ export default function FranchisePage() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-widest text-white/40">Full Name</label>
-                    <input required type="text" className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="John Doe" />
+                    <input required type="text" className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#FF9933]/50 transition-colors" placeholder="John Doe" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-widest text-white/40">Email</label>
-                    <input required type="email" className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="john@example.com" />
+                    <input required type="email" className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#FF9933]/50 transition-colors" placeholder="john@example.com" />
                   </div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-widest text-white/40">Phone</label>
-                    <input required type="tel" className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="+91 XXXXX XXXXX" />
+                    <input required type="tel" className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#FF9933]/50 transition-colors" placeholder="+91 XXXXX XXXXX" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-widest text-white/40">City / State</label>
-                    <input required type="text" className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="Mumbai, Maharashtra" />
+                    <input required type="text" className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#FF9933]/50 transition-colors" placeholder="Mumbai, Maharashtra" />
                   </div>
                 </div>
 
                 <div className="space-y-2">
                   <label className="text-xs uppercase tracking-widest text-white/40">Company Name</label>
-                  <input type="text" className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="Doe Logistics Pvt Ltd (Optional)" />
+                  <input type="text" className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#FF9933]/50 transition-colors" placeholder="Doe Logistics Pvt Ltd (Optional)" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs uppercase tracking-widest text-white/40">GST Number (Optional)</label>
-                  <input type="text" className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors" placeholder="22AAAAA0000A1Z5" />
+                  <input type="text" className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#FF9933]/50 transition-colors" placeholder="22AAAAA0000A1Z5" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs uppercase tracking-widest text-white/40">Business Type</label>
-                  <select className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#00ff87]/50 transition-colors appearance-none">
+                  <select className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#FF9933]/50 transition-colors appearance-none">
                     <option value="" className="bg-[#0a0a0a]">Select business type...</option>
                     <option value="individual" className="bg-[#0a0a0a]">Individual / Sole Proprietor</option>
                     <option value="partnership" className="bg-[#0a0a0a]">Partnership</option>
@@ -165,7 +165,7 @@ export default function FranchisePage() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-widest text-white/40">Years in Logistics (India)</label>
-                    <select required className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#00ff87]/50 transition-colors appearance-none">
+                    <select required className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#FF9933]/50 transition-colors appearance-none">
                       <option value="" className="bg-[#0a0a0a]">Select experience...</option>
                       <option value="<1" className="bg-[#0a0a0a]">&lt; 1 Year</option>
                       <option value="1-3" className="bg-[#0a0a0a]">1-3 Years</option>
@@ -175,7 +175,7 @@ export default function FranchisePage() {
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-widest text-white/40">Investment Capacity</label>
-                    <select required className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#00ff87]/50 transition-colors appearance-none">
+                    <select required className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#FF9933]/50 transition-colors appearance-none">
                       <option value="" className="bg-[#0a0a0a]">Select capacity...</option>
                       <option value="5-10" className="bg-[#0a0a0a]">₹5L - ₹10L</option>
                       <option value="10-25" className="bg-[#0a0a0a]">₹10L - ₹25L</option>
@@ -187,7 +187,7 @@ export default function FranchisePage() {
 
                 <div className="space-y-2">
                   <label className="text-xs uppercase tracking-widest text-white/40">Message</label>
-                  <textarea required rows={5} className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#00ff87]/50 transition-colors resize-none" placeholder="Tell us about yourself and why you want to partner with ShipBridge..." />
+                  <textarea required rows={5} className="w-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#FF9933]/50 transition-colors resize-none" placeholder="Tell us about yourself and why you want to partner with ShipBridge..." />
                 </div>
 
                 <div className="button-wrap w-full mt-8">
@@ -213,7 +213,7 @@ export default function FranchisePage() {
                   { step: "4", title: "Onboarding", desc: "Franchise agreement signing and 8-week training." },
                 ].map((item, idx) => (
                   <div key={idx} className="relative flex items-start gap-6">
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#00ff87] flex items-center justify-center text-[#0a0a0a] font-bold text-xs shadow-[0_0_15px_rgba(0,255,135,0.4)] z-10 mt-1">
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#FF9933] flex items-center justify-center text-[#0a0a0a] font-bold text-xs shadow-[0_0_15px_rgba(0,255,135,0.4)] z-10 mt-1">
                       {item.step}
                     </div>
                     <div>
@@ -227,7 +227,7 @@ export default function FranchisePage() {
               <div className="mt-16 p-8 rounded-2xl bg-gradient-to-br from-[#064e3b]/20 to-transparent border border-white/5">
                 <h4 className="font-bold text-white mb-2">Questions?</h4>
                 <p className="text-white/60 text-sm mb-4 font-light">Reach out to our dedicated franchise development team.</p>
-                <a href="mailto:franchise@shipbridge.com" className="text-[#00ff87] font-medium hover:underline underline-offset-4 transition-all">franchise@shipbridge.com</a>
+                <a href="mailto:franchise@shipbridge.com" className="text-[#FF9933] font-medium hover:underline underline-offset-4 transition-all">franchise@shipbridge.com</a>
               </div>
             </div>
           </div>

@@ -200,7 +200,7 @@ export default function CircularTestimonials({
             >
               {activeTestimonial.name}
             </h3>
-            <p className="text-sm text-[#00ff87] tracking-wider uppercase font-medium mb-6">
+            <p className="text-sm text-[#FF9933] tracking-wider uppercase font-medium mb-6">
               {activeTestimonial.designation}
             </p>
             <div
@@ -223,7 +223,7 @@ export default function CircularTestimonials({
             <button
               onClick={handlePrev}
               className="w-11 h-11 rounded-full flex items-center justify-center cursor-pointer transition-colors duration-300 border-none"
-              style={{ backgroundColor: hoverPrev ? "#00ff87" : "rgba(255,255,255,0.08)" }}
+              style={{ backgroundColor: hoverPrev ? "#FF9933" : "rgba(255,255,255,0.08)" }}
               onMouseEnter={() => setHoverPrev(true)}
               onMouseLeave={() => setHoverPrev(false)}
               aria-label="Previous"
@@ -233,7 +233,7 @@ export default function CircularTestimonials({
             <button
               onClick={handleNext}
               className="w-11 h-11 rounded-full flex items-center justify-center cursor-pointer transition-colors duration-300 border-none"
-              style={{ backgroundColor: hoverNext ? "#00ff87" : "rgba(255,255,255,0.08)" }}
+              style={{ backgroundColor: hoverNext ? "#FF9933" : "rgba(255,255,255,0.08)" }}
               onMouseEnter={() => setHoverNext(true)}
               onMouseLeave={() => setHoverNext(false)}
               aria-label="Next"

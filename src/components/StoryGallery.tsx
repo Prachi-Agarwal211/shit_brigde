@@ -65,7 +65,7 @@ export default function StoryGallery() {
           <div className="text-right">
             <p className="text-white/30 text-xs font-mono mb-2">// GLOBAL_NETWORK_SYNC: ACTIVE</p>
             <div className="flex gap-2">
-              <div className="w-2 h-2 rounded-sm bg-[#00ff87]" />
+              <div className="w-2 h-2 rounded-sm bg-[#FF9933]" />
               <div className="w-2 h-2 rounded-sm bg-white/20" />
               <div className="w-2 h-2 rounded-sm bg-white/20" />
             </div>
@@ -74,18 +74,18 @@ export default function StoryGallery() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {stories.map((story, i) => (
-            <div key={i} className="story-card holo-glass p-8 rounded-2xl group hover:border-[#00ff87]/40 transition-colors">
+            <div key={i} className="story-card holo-glass p-8 rounded-2xl group hover:border-[#FF9933]/40 transition-colors">
               <div className="flex justify-between items-start mb-12">
                 <div className="flex flex-col">
                   <span className="text-[10px] font-mono text-white/40 mb-1">NODE_ID</span>
-                  <span className="text-xs font-bold font-mono text-[#00ff87]">0{i+1}_SUCCESS</span>
+                  <span className="text-xs font-bold font-mono text-[#FF9933]">0{i+1}_SUCCESS</span>
                 </div>
                 <div className="w-10 h-10 border border-white/10 rounded flex items-center justify-center text-lg">
                   {i === 0 ? "⚡" : i === 1 ? "📡" : "📦"}
                 </div>
               </div>
               
-              <h3 className="text-xl font-bold mb-4 group-hover:text-[#00ff87] transition-colors uppercase tracking-wider">{story.title}</h3>
+              <h3 className="text-xl font-bold mb-4 group-hover:text-[#FF9933] transition-colors uppercase tracking-wider">{story.title}</h3>
               <div className="text-3xl font-black mb-6 font-mono tracking-tighter" style={{ color: story.color }}>
                 {story.metric}
               </div>

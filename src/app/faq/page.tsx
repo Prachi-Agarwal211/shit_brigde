@@ -25,13 +25,13 @@ const faqs = [
 
 function FAQItem({ question, answer, open, onToggle }: { question: string; answer: string; open: boolean; onToggle: () => void }) {
   return (
-    <div className={`holo-glass rounded-xl overflow-hidden transition-all duration-300 ${open ? 'border-[#00ff87]/30 bg-[#00ff87]/5' : 'border-white/5'}`}>
+    <div className={`holo-glass rounded-xl overflow-hidden transition-all duration-300 ${open ? 'border-[#FF9933]/30 bg-[#FF9933]/5' : 'border-white/5'}`}>
       <button
         className="w-full flex items-center justify-between gap-4 p-6 text-left"
         onClick={onToggle}
       >
-        <span className={`font-mono text-xs md:text-sm tracking-widest ${open ? 'text-[#00ff87]' : 'text-white/60'}`}>{question}</span>
-        <div className={`w-6 h-6 border flex items-center justify-center shrink-0 transition-all duration-300 ${open ? 'bg-[#00ff87] border-[#00ff87] rotate-45' : 'border-white/20'}`}>
+        <span className={`font-mono text-xs md:text-sm tracking-widest ${open ? 'text-[#FF9933]' : 'text-white/60'}`}>{question}</span>
+        <div className={`w-6 h-6 border flex items-center justify-center shrink-0 transition-all duration-300 ${open ? 'bg-[#FF9933] border-[#FF9933] rotate-45' : 'border-white/20'}`}>
           <span className={`text-lg font-mono leading-none ${open ? 'text-black' : 'text-white/40'}`}>+</span>
         </div>
       </button>

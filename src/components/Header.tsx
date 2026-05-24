@@ -53,6 +53,16 @@ export default function Header() {
 
   if (pathname === "/chat") return null;
 
+  const navLinks = [
+    { label: "Home", href: "/" },
+    { label: "Services", href: "/services" },
+    { label: "Products", href: "/products" },
+    { label: "About", href: "/about" },
+    { label: "Franchise", href: "/franchise" },
+    { label: "FAQ", href: "/faq" },
+    { label: "Contact", href: "/contact" }
+  ];
+
   return (
     <>
       <ScrollProgress />
@@ -60,45 +70,39 @@ export default function Header() {
         ref={headerRef}
         className="fixed top-0 left-0 right-0 z-50 transition-all px-6 md:px-12 border-b border-transparent flex items-center justify-between"
       >
-        {/* Logo Terminal */}
+        {/* Logo */}
         <Link href="/" className="flex items-center gap-4 group">
-          <div className="relative w-10 h-10 border border-[#00ff87]/30 rounded-lg flex items-center justify-center bg-black overflow-hidden">
+          <div className="relative w-10 h-10 border border-[#FF9933]/30 rounded-lg flex items-center justify-center bg-black overflow-hidden">
             <Image src={logo} alt="ShipBridge" width={24} height={24} className="object-contain z-10" />
-            <div className="absolute inset-0 bg-[#00ff87]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute inset-0 bg-[#FF9933]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
           <div className="hidden sm:flex flex-col -gap-1">
             <span className="text-sm font-bold tracking-tighter text-white">SHIPBRIDGE</span>
-            <span className="text-[8px] font-mono text-[#00ff87] tracking-[0.2em]">OS_v2.4</span>
+            <span className="text-[8px] font-mono text-[#FF9933] tracking-[0.2em]">BHARAT_NODE</span>
           </div>
         </Link>
 
-        {/* Precision Navigation */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {[
-            { label: "Network", href: "/" },
-            { label: "Intelligence", href: "/about" },
-            { label: "Terminal", href: "/faq" },
-            { label: "Partners", href: "/franchise" },
-            { label: "Contact", href: "/contact" }
-          ].map((item) => (
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+          {navLinks.map((item) => (
             <Link 
               key={item.label} 
               href={item.href} 
-              className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-white/40 hover:text-[#00ff87] transition-all relative group py-2"
+              className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-white/60 hover:text-[#FF9933] transition-all relative group py-2"
             >
               {item.label}
-              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#00ff87] transition-all group-hover:w-full" />
+              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#FF9933] transition-all group-hover:w-full" />
             </Link>
           ))}
         </nav>
 
-        {/* Node Access */}
+        {/* Mobile Toggle & Status */}
         <div className="flex items-center gap-6">
           <div className="hidden md:flex flex-col items-end mr-4">
-            <span className="text-[8px] font-mono text-white/30 uppercase tracking-widest">System Status</span>
+            <span className="text-[8px] font-mono text-white/30 uppercase tracking-widest">Network Status</span>
             <div className="flex items-center gap-1.5">
-              <div className="w-1 h-1 rounded-full bg-[#00ff87] animate-pulse" />
-              <span className="text-[9px] font-mono text-[#00ff87] font-bold">OPERATIONAL</span>
+              <div className="w-1 h-1 rounded-full bg-[#FF9933] animate-pulse" />
+              <span className="text-[9px] font-mono text-[#FF9933] font-bold">PAN-INDIA ACTIVE</span>
             </div>
           </div>
           
@@ -108,37 +112,37 @@ export default function Header() {
           >
             <div className="w-5 h-4 flex flex-col justify-between">
               <span className="w-full h-[1px] bg-white" />
-              <span className="w-2/3 h-[1px] bg-[#00ff87]" />
+              <span className="w-2/3 h-[1px] bg-[#FF9933]" />
               <span className="w-full h-[1px] bg-white" />
             </div>
           </button>
         </div>
       </header>
 
-      {/* Mobile Terminal Menu */}
+      {/* Mobile Menu */}
       <div className={`fixed inset-0 z-[100] bg-black transition-transform duration-500 ease-out-expo ${mobileMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
-        <div className="h-full flex flex-col p-12 logistics-grid">
-          <div className="flex justify-between items-center mb-20">
-            <span className="text-terminal text-xs">MENU_INITIALIZED</span>
+        <div className="h-full flex flex-col p-8 md:p-12 logistics-grid overflow-y-auto">
+          <div className="flex justify-between items-center mb-12">
+            <span className="text-terminal text-xs">NAVIGATION</span>
             <button onClick={() => setMobileMenuOpen(false)} className="text-terminal text-xs">[ CLOSE ]</button>
           </div>
-          <nav className="flex flex-col gap-8">
-            {['Home', 'About', 'FAQ', 'Franchise', 'Contact'].map((item, i) => (
+          <nav className="flex flex-col gap-6">
+            {navLinks.map((item, i) => (
               <Link 
-                key={item} 
-                href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                key={item.label} 
+                href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-4xl font-bold tracking-tighter hover:text-[#00ff87] transition-colors flex items-center gap-4"
+                className="text-3xl md:text-4xl font-bold tracking-tighter hover:text-[#FF9933] transition-colors flex items-center gap-4"
               >
-                <span className="text-xs font-mono text-[#00ff87]">0{i+1}</span>
-                {item}
+                <span className="text-xs font-mono text-[#FF9933]">0{i+1}</span>
+                {item.label}
               </Link>
             ))}
           </nav>
           <div className="mt-auto pt-12 border-t border-white/10">
             <p className="text-[10px] font-mono text-white/20 leading-relaxed uppercase tracking-[0.2em]">
-              ShipBridge OS // Global Logistics Network<br/>
-              Last Sync: 0.2ms ago
+              ShipBridge // Pan-India Logistics Network<br/>
+              Built for Indian Commerce
             </p>
           </div>
         </div>

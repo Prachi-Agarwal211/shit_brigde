@@ -615,7 +615,7 @@ export default function AIChatConsole() {
                             <td
                               key={cIdx}
                               className={`px-4 py-2 text-white/80 font-light ${
-                                isBold ? "font-bold text-[#00ff87]" : ""
+                                isBold ? "font-bold text-[#FF9933]" : ""
                               }`}
                             >
                               {cellContent}
@@ -649,7 +649,7 @@ export default function AIChatConsole() {
       const parsedLine = parts.map((part, j) => {
         if (part.startsWith("**") && part.endsWith("**")) {
           return (
-            <strong key={j} className="font-bold text-[#00ff87] drop-shadow-[0_0_10px_rgba(0,255,135,0.2)]">
+            <strong key={j} className="font-bold text-[#FF9933] drop-shadow-[0_0_10px_rgba(0,255,135,0.2)]">
               {part.slice(2, -2)}
             </strong>
           );
@@ -673,7 +673,7 @@ export default function AIChatConsole() {
       if (isBullet) {
         return (
           <div key={i} className="flex items-start gap-2.5 ml-4 my-1.5 group">
-            <span className="text-[#00ff87] mt-2 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[#00ff87] shadow-[0_0_8px_rgba(0,255,135,0.6)] group-hover:scale-125 transition-transform" />
+            <span className="text-[#FF9933] mt-2 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[#FF9933] shadow-[0_0_8px_rgba(0,255,135,0.6)] group-hover:scale-125 transition-transform" />
             <span className="font-light text-white/90 text-sm leading-relaxed">{parsedLine}</span>
           </div>
         );
@@ -683,7 +683,7 @@ export default function AIChatConsole() {
         const num = match ? match[1] : "1";
         return (
           <div key={i} className="flex items-start gap-2 ml-4 my-1.5">
-            <span className="text-[#00ff87] font-semibold flex-shrink-0 text-xs mt-0.5">{num}.</span>
+            <span className="text-[#FF9933] font-semibold flex-shrink-0 text-xs mt-0.5">{num}.</span>
             <span className="font-light text-white/90 text-sm leading-relaxed">{parsedLine}</span>
           </div>
         );
@@ -728,7 +728,7 @@ export default function AIChatConsole() {
             <div className="flex items-center gap-2">
               <span className="text-xl drop-shadow-[0_0_8px_rgba(0,255,135,0.4)]">🚛</span>
               <div>
-                <h1 className="text-sm font-black tracking-widest text-[#00ff87] drop-shadow-[0_0_10px_rgba(0,255,135,0.2)]">
+                <h1 className="text-sm font-black tracking-widest text-[#FF9933] drop-shadow-[0_0_10px_rgba(0,255,135,0.2)]">
                   SHIPBRIDGE
                 </h1>
                 <p className="text-[9px] uppercase tracking-widest text-orange-500 font-bold">AI SYSTEM CO-PILOT</p>
@@ -746,7 +746,7 @@ export default function AIChatConsole() {
           <div className="p-4">
             <button
               onClick={handleNewChat}
-              className="w-full py-3 bg-white/[0.02] hover:bg-[#00ff87]/15 border border-white/10 hover:border-[#00ff87]/30 text-white hover:text-[#00ff87] rounded-xl text-xs uppercase tracking-wider font-bold transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-[0_0_15px_rgba(0,255,135,0.05)] hover:shadow-[0_0_20px_rgba(0,255,135,0.15)] hover:scale-[1.02]"
+              className="w-full py-3 bg-white/[0.02] hover:bg-[#FF9933]/15 border border-white/10 hover:border-[#FF9933]/30 text-white hover:text-[#FF9933] rounded-xl text-xs uppercase tracking-wider font-bold transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-[0_0_15px_rgba(0,255,135,0.05)] hover:shadow-[0_0_20px_rgba(0,255,135,0.15)] hover:scale-[1.02]"
             >
               <span>+</span> New Dispatch Log
             </button>
@@ -782,7 +782,7 @@ export default function AIChatConsole() {
                       onKeyDown={e => e.key === "Enter" && handleFinishRename(s.id)}
                       autoFocus
                       onClick={e => e.stopPropagation()}
-                      className="w-full bg-black/80 border border-[#00ff87]/30 rounded px-1.5 py-0.5 text-xs text-white focus:outline-none"
+                      className="w-full bg-black/80 border border-[#FF9933]/30 rounded px-1.5 py-0.5 text-xs text-white focus:outline-none"
                     />
                   ) : (
                     <span
@@ -822,7 +822,7 @@ export default function AIChatConsole() {
           {/* Sidebar Footer Console Info */}
           <div className="p-4 border-t border-white/5 flex flex-col gap-2 bg-black/20">
             <div className="flex items-center gap-2.5 px-2">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#00ff87] to-[#f97316] text-black font-black text-xs flex items-center justify-center shadow-[0_0_10px_rgba(0,255,135,0.3)]">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#FF9933] to-[#f97316] text-black font-black text-xs flex items-center justify-center shadow-[0_0_10px_rgba(0,255,135,0.3)]">
                 AI
               </div>
               <div className="min-w-0">
@@ -848,7 +848,7 @@ export default function AIChatConsole() {
             <button
               onClick={() => setMobileViewMode("chat")}
               className={`flex-1 py-3 text-xs uppercase tracking-wider font-bold rounded-xl transition-all ${
-                mobileViewMode === "chat" ? "bg-white/5 text-[#00ff87]" : "text-white/40"
+                mobileViewMode === "chat" ? "bg-white/5 text-[#FF9933]" : "text-white/40"
               }`}
             >
               💬 AI Dispatch Chat
@@ -856,7 +856,7 @@ export default function AIChatConsole() {
             <button
               onClick={() => setMobileViewMode("workspace")}
               className={`flex-1 py-3 text-xs uppercase tracking-wider font-bold rounded-xl transition-all relative ${
-                mobileViewMode === "workspace" ? "bg-white/5 text-[#00ff87]" : "text-white/40"
+                mobileViewMode === "workspace" ? "bg-white/5 text-[#FF9933]" : "text-white/40"
               }`}
             >
               🖥️ Sandbox Workspace
@@ -888,7 +888,7 @@ export default function AIChatConsole() {
                 <div>
                   <h2 className="text-xs font-bold tracking-tight text-white flex items-center gap-2">
                     {activeSession.title}
-                    <span className="text-[8px] uppercase tracking-wider bg-white/5 border border-white/10 px-1.5 py-0.5 rounded text-[#00ff87] font-semibold shadow-[0_0_10px_rgba(0,255,135,0.1)]">
+                    <span className="text-[8px] uppercase tracking-wider bg-white/5 border border-white/10 px-1.5 py-0.5 rounded text-[#FF9933] font-semibold shadow-[0_0_10px_rgba(0,255,135,0.1)]">
                       Co-Pilot Terminal
                     </span>
                   </h2>
@@ -909,7 +909,7 @@ export default function AIChatConsole() {
                   onClick={() => setSelectedModel("pro")}
                   className={`px-2.5 py-1 rounded-lg text-[9px] uppercase tracking-wider font-bold transition-all cursor-pointer ${
                     selectedModel === "pro"
-                      ? "bg-[#00ff87] text-black shadow-[0_0_12px_rgba(0,255,135,0.3)]"
+                      ? "bg-[#FF9933] text-black shadow-[0_0_12px_rgba(0,255,135,0.3)]"
                       : "text-white/40 hover:text-white"
                   }`}
                 >
@@ -951,7 +951,7 @@ export default function AIChatConsole() {
                         <div
                           className={`w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-xs select-none ${
                             isAI
-                              ? "bg-gradient-to-br from-[#00ff87] to-[#f97316] text-black font-extrabold shadow-[0_0_10px_rgba(0,255,135,0.2)]"
+                              ? "bg-gradient-to-br from-[#FF9933] to-[#f97316] text-black font-extrabold shadow-[0_0_10px_rgba(0,255,135,0.2)]"
                               : "bg-white/5 text-white/80 border border-white/10 shadow-[0_0_10px_rgba(255,255,255,0.05)]"
                           }`}
                         >
@@ -986,7 +986,7 @@ export default function AIChatConsole() {
                             className={`p-4 rounded-2xl border text-sm leading-relaxed transition-all duration-300 ${
                               isAI
                                 ? "bg-white/[0.02] border-white/5 text-white/90 shadow-[0_4px_24px_rgba(255,255,255,0.02)] hover:shadow-[0_4px_32px_rgba(255,255,255,0.04)]"
-                                : "bg-[#00ff87]/10 border-[#00ff87]/20 text-white shadow-[0_4px_20px_rgba(0,255,135,0.05)] hover:shadow-[0_4px_25px_rgba(0,255,135,0.1)]"
+                                : "bg-[#FF9933]/10 border-[#FF9933]/20 text-white shadow-[0_4px_20px_rgba(0,255,135,0.05)] hover:shadow-[0_4px_25px_rgba(0,255,135,0.1)]"
                             }`}
                           >
                             {isAI ? renderMessageText(msg.text) : <p className="font-light text-white/90">{msg.text}</p>}
@@ -1009,7 +1009,7 @@ export default function AIChatConsole() {
                                     setMobileViewMode("workspace");
                                     runExcelAuditSimulator();
                                   }}
-                                  className="px-2.5 py-1 bg-[#00ff87]/15 hover:bg-[#00ff87]/25 border border-[#00ff87]/30 rounded-lg text-[10px] text-[#00ff87] font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-[0_0_8px_rgba(0,255,135,0.1)]"
+                                  className="px-2.5 py-1 bg-[#FF9933]/15 hover:bg-[#FF9933]/25 border border-[#FF9933]/30 rounded-lg text-[10px] text-[#FF9933] font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-[0_0_8px_rgba(0,255,135,0.1)]"
                                 >
                                   ⚡ Run Auto-Audit Now
                                 </button>
@@ -1059,20 +1059,20 @@ export default function AIChatConsole() {
                   {/* Typing Indicator */}
                   {isTyping && (
                     <div className="flex gap-3 mr-auto max-w-xl animate-pulse">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#00ff87] to-[#f97316] text-black font-bold text-xs flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#FF9933] to-[#f97316] text-black font-bold text-xs flex items-center justify-center">
                         🤖
                       </div>
                       <div className="p-4 rounded-2xl border border-white/5 bg-white/[0.01] flex items-center gap-1.5">
                         <span
-                          className="w-1.5 h-1.5 bg-[#00ff87] rounded-full animate-bounce"
+                          className="w-1.5 h-1.5 bg-[#FF9933] rounded-full animate-bounce"
                           style={{ animationDelay: "0ms" }}
                         />
                         <span
-                          className="w-1.5 h-1.5 bg-[#00ff87] rounded-full animate-bounce"
+                          className="w-1.5 h-1.5 bg-[#FF9933] rounded-full animate-bounce"
                           style={{ animationDelay: "150ms" }}
                         />
                         <span
-                          className="w-1.5 h-1.5 bg-[#00ff87] rounded-full animate-bounce"
+                          className="w-1.5 h-1.5 bg-[#FF9933] rounded-full animate-bounce"
                           style={{ animationDelay: "300ms" }}
                         />
                       </div>
@@ -1111,9 +1111,9 @@ export default function AIChatConsole() {
                       <button
                         key={idx}
                         onClick={() => handleSuggestionClick(card.prompt)}
-                        className="p-3 text-left rounded-xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] hover:border-[#00ff87]/20 transition-all text-xs cursor-pointer group shadow-[0_0_10px_rgba(0,0,0,0.2)] hover:shadow-[0_0_15px_rgba(0,255,135,0.05)]"
+                        className="p-3 text-left rounded-xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] hover:border-[#FF9933]/20 transition-all text-xs cursor-pointer group shadow-[0_0_10px_rgba(0,0,0,0.2)] hover:shadow-[0_0_15px_rgba(0,255,135,0.05)]"
                       >
-                        <div className="font-bold text-white/80 group-hover:text-[#00ff87] mb-1 truncate">
+                        <div className="font-bold text-white/80 group-hover:text-[#FF9933] mb-1 truncate">
                           {card.label}
                         </div>
                         <div className="text-[9px] text-white/30 font-light line-clamp-2 leading-relaxed">
@@ -1127,7 +1127,7 @@ export default function AIChatConsole() {
                 {/* Main Typing Area */}
                 <form
                   onSubmit={handleSendMessage}
-                  className="relative p-1 rounded-2xl border border-white/10 bg-black/60 backdrop-blur-md focus-within:border-[#00ff87]/40 transition-all shadow-[0_4px_30px_rgba(0,0,0,0.4)]"
+                  className="relative p-1 rounded-2xl border border-white/10 bg-black/60 backdrop-blur-md focus-within:border-[#FF9933]/40 transition-all shadow-[0_4px_30px_rgba(0,0,0,0.4)]"
                   style={{
                     boxShadow: "inset 0 1px 1px rgba(255,255,255,0.05), 0 8px 32px rgba(0,0,0,0.5)"
                   }}
@@ -1154,7 +1154,7 @@ export default function AIChatConsole() {
                     <button
                       type="button"
                       onClick={handleAttachClick}
-                      className="p-3 text-white/55 hover:text-[#00ff87] hover:bg-white/5 rounded-xl transition-all flex-shrink-0 cursor-pointer"
+                      className="p-3 text-white/55 hover:text-[#FF9933] hover:bg-white/5 rounded-xl transition-all flex-shrink-0 cursor-pointer"
                       title="Attach LR/POD Photo or CSV Ledger"
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
@@ -1179,7 +1179,7 @@ export default function AIChatConsole() {
 
                     <button
                       type="submit"
-                      className="p-3 text-black bg-[#00ff87] hover:scale-105 active:scale-95 rounded-xl transition-all flex-shrink-0 cursor-pointer shadow-[0_0_15px_rgba(0,255,135,0.25)] m-1"
+                      className="p-3 text-black bg-[#FF9933] hover:scale-105 active:scale-95 rounded-xl transition-all flex-shrink-0 cursor-pointer shadow-[0_0_15px_rgba(0,255,135,0.25)] m-1"
                       title="Transmit Prompt"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
@@ -1284,7 +1284,7 @@ export default function AIChatConsole() {
                           {kpi.title}
                         </h4>
                         <div className="text-lg font-black text-white tracking-tight">{kpi.value}</div>
-                        <div className="text-[9px] text-[#00ff87] font-medium mt-1">{kpi.sub}</div>
+                        <div className="text-[9px] text-[#FF9933] font-medium mt-1">{kpi.sub}</div>
                       </div>
                     ))}
                   </div>
@@ -1296,7 +1296,7 @@ export default function AIChatConsole() {
                         <h3 className="text-xs font-bold">Trip Profitability Trends</h3>
                         <p className="text-[9px] text-white/35">Gross Margin % per Region Clusters</p>
                       </div>
-                      <span className="text-[8px] uppercase bg-[#00ff87]/15 border border-[#00ff87]/30 text-[#00ff87] font-bold px-1.5 py-0.5 rounded">
+                      <span className="text-[8px] uppercase bg-[#FF9933]/15 border border-[#FF9933]/30 text-[#FF9933] font-bold px-1.5 py-0.5 rounded">
                         Active Logs
                       </span>
                     </div>
@@ -1305,8 +1305,8 @@ export default function AIChatConsole() {
                       <svg className="w-full h-full" viewBox="0 0 300 120" preserveAspectRatio="none">
                         <defs>
                           <linearGradient id="profitGrad" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stopColor="#00ff87" stopOpacity="0.25" />
-                            <stop offset="100%" stopColor="#00ff87" stopOpacity="0" />
+                            <stop offset="0%" stopColor="#FF9933" stopOpacity="0.25" />
+                            <stop offset="100%" stopColor="#FF9933" stopOpacity="0" />
                           </linearGradient>
                         </defs>
                         {/* Grid lines */}
@@ -1323,15 +1323,15 @@ export default function AIChatConsole() {
                         <path
                           d="M0 100 Q 50 60, 100 80 T 200 40 T 300 20"
                           fill="none"
-                          stroke="#00ff87"
+                          stroke="#FF9933"
                           strokeWidth="2.5"
                           strokeLinecap="round"
                         />
 
                         {/* Plot nodes */}
-                        <circle cx="100" cy="80" r="4.5" fill="#00ff87" stroke="#000" strokeWidth="1.5" />
-                        <circle cx="200" cy="40" r="4.5" fill="#00ff87" stroke="#000" strokeWidth="1.5" />
-                        <circle cx="300" cy="20" r="4.5" fill="#00ff87" stroke="#000" strokeWidth="1.5" />
+                        <circle cx="100" cy="80" r="4.5" fill="#FF9933" stroke="#000" strokeWidth="1.5" />
+                        <circle cx="200" cy="40" r="4.5" fill="#FF9933" stroke="#000" strokeWidth="1.5" />
+                        <circle cx="300" cy="20" r="4.5" fill="#FF9933" stroke="#000" strokeWidth="1.5" />
                       </svg>
                     </div>
                     <div className="flex justify-between text-[8px] text-white/30 font-mono">
@@ -1407,7 +1407,7 @@ export default function AIChatConsole() {
                       <button
                         onClick={runExcelAuditSimulator}
                         disabled={auditStatus === "scanning"}
-                        className="px-4 py-2 bg-[#00ff87] text-black hover:scale-102 font-bold text-xs uppercase tracking-wider rounded-xl cursor-pointer shadow-[0_0_12px_rgba(0,255,135,0.25)] transition-all disabled:opacity-40 disabled:pointer-events-none flex items-center gap-1.5"
+                        className="px-4 py-2 bg-[#FF9933] text-black hover:scale-102 font-bold text-xs uppercase tracking-wider rounded-xl cursor-pointer shadow-[0_0_12px_rgba(0,255,135,0.25)] transition-all disabled:opacity-40 disabled:pointer-events-none flex items-center gap-1.5"
                       >
                         {auditStatus === "scanning" ? (
                           <>
@@ -1423,13 +1423,13 @@ export default function AIChatConsole() {
                     {/* Progress Bar Loader */}
                     {auditStatus === "scanning" && (
                       <div className="space-y-1.5 animate-pulse">
-                        <div className="flex justify-between text-[9px] text-[#00ff87] font-mono">
+                        <div className="flex justify-between text-[9px] text-[#FF9933] font-mono">
                           <span>EXECUTING LEDGER SCRAPER</span>
                           <span>{auditProgress}%</span>
                         </div>
                         <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
                           <div
-                            className="h-full bg-gradient-to-r from-[#00ff87] to-orange-500 transition-all duration-300"
+                            className="h-full bg-gradient-to-r from-[#FF9933] to-orange-500 transition-all duration-300"
                             style={{ width: `${auditProgress}%` }}
                           />
                         </div>
@@ -1458,13 +1458,13 @@ export default function AIChatConsole() {
                               onClick={() => setSelectedExcelRow(row)}
                               className={`cursor-pointer hover:bg-white/[0.02] transition-colors ${
                                 selectedExcelRow?.id === row.id
-                                  ? "bg-white/[0.04] border-l-2 border-l-[#00ff87]"
+                                  ? "bg-white/[0.04] border-l-2 border-l-[#FF9933]"
                                   : ""
                               }`}
                             >
                               <td className="px-3 py-3 text-center text-white/30 font-mono">{idx + 1}</td>
                               <td className="px-3 py-3 font-semibold text-white/90">{row.lrNo}</td>
-                              <td className="px-3 py-3 font-mono text-[#00ff87]">{row.vehicle}</td>
+                              <td className="px-3 py-3 font-mono text-[#FF9933]">{row.vehicle}</td>
                               <td className="px-3 py-3 text-white/75">{row.driver}</td>
                               <td className="px-3 py-3 text-right font-mono font-bold text-white/90">{row.margin}</td>
                               <td className="px-3 py-3 text-center">
@@ -1489,7 +1489,7 @@ export default function AIChatConsole() {
                     {/* Selected Row Drawer details */}
                     {selectedExcelRow && (
                       <div className="p-4 border-t border-white/5 bg-black/60 space-y-2 relative">
-                        <h4 className="text-[10px] uppercase text-[#00ff87] font-bold">
+                        <h4 className="text-[10px] uppercase text-[#FF9933] font-bold">
                           Ledger Audit Logs: {selectedExcelRow.lrNo}
                         </h4>
                         <div className="grid grid-cols-3 gap-2 text-[10px] font-mono text-white/40">
@@ -1539,8 +1539,8 @@ export default function AIChatConsole() {
                     {/* Bounding box loading state */}
                     {ocrLoading && (
                       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm z-30 flex flex-col items-center justify-center gap-3">
-                        <span className="animate-spin w-8 h-8 border-4 border-[#00ff87] border-t-transparent rounded-full" />
-                        <span className="text-xs font-mono text-[#00ff87] uppercase tracking-wider animate-pulse">
+                        <span className="animate-spin w-8 h-8 border-4 border-[#FF9933] border-t-transparent rounded-full" />
+                        <span className="text-xs font-mono text-[#FF9933] uppercase tracking-wider animate-pulse">
                           Running OCR Layout Parser...
                         </span>
                       </div>
@@ -1606,7 +1606,7 @@ export default function AIChatConsole() {
                       <div className="flex justify-between items-end border-t border-white/5 pt-2">
                         <div className="w-16 h-12 border border-white/5 flex flex-col justify-between items-center p-1 rounded bg-black/40">
                           <span className="text-[6px] text-white/30 uppercase">Depot Stamp</span>
-                          <span className="text-[7px] text-[#00ff87] font-semibold">VERIFIED</span>
+                          <span className="text-[7px] text-[#FF9933] font-semibold">VERIFIED</span>
                         </div>
                         <div className="w-24 h-12 border border-white/5 flex flex-col justify-between items-center p-1 rounded bg-black/40">
                           <span className="text-[6px] text-white/30 uppercase">Driver Signature</span>
@@ -1624,7 +1624,7 @@ export default function AIChatConsole() {
                             onClick={() => setSelectedOCRField(field)}
                             className={`absolute rounded transition-all cursor-pointer ${
                               hoveredOCRField === field.id
-                                ? "bg-[#00ff87]/15 border-2 border-[#00ff87] shadow-[0_0_12px_rgba(0,255,135,0.4)] z-20"
+                                ? "bg-[#FF9933]/15 border-2 border-[#FF9933] shadow-[0_0_12px_rgba(0,255,135,0.4)] z-20"
                                 : selectedOCRField?.id === field.id
                                 ? "bg-orange-500/15 border-2 border-orange-500 shadow-[0_0_12px_rgba(249,115,22,0.4)] z-20"
                                 : "bg-transparent border border-white/10 hover:border-white/35"
@@ -1645,12 +1645,12 @@ export default function AIChatConsole() {
                         <div className="space-y-1.5 animate-fade-in">
                           <div className="flex justify-between items-center">
                             <span className="font-bold text-white">{selectedOCRField.label}</span>
-                            <span className="text-[#00ff87] font-bold font-mono">{selectedOCRField.confidence}</span>
+                            <span className="text-[#FF9933] font-bold font-mono">{selectedOCRField.confidence}</span>
                           </div>
                           <div className="text-white/80">
                             EXTRACTED VALUE: <span className="font-mono text-orange-400">{selectedOCRField.value}</span>
                           </div>
-                          <div className="text-[8px] uppercase tracking-widest text-[#00ff87]">
+                          <div className="text-[8px] uppercase tracking-widest text-[#FF9933]">
                             NIC STAT: {selectedOCRField.status}
                           </div>
                         </div>
@@ -1676,7 +1676,7 @@ export default function AIChatConsole() {
 
                   {/* Timeline representation */}
                   <div className="flex-1 p-4 rounded-2xl border border-white/5 bg-black/40 relative">
-                    <div className="absolute left-[29px] top-6 bottom-6 w-0.5 bg-gradient-to-b from-[#00ff87] via-[#f97316] to-white/15" />
+                    <div className="absolute left-[29px] top-6 bottom-6 w-0.5 bg-gradient-to-b from-[#FF9933] via-[#f97316] to-white/15" />
 
                     <div className="space-y-6 relative z-10">
                       {[
@@ -1722,7 +1722,7 @@ export default function AIChatConsole() {
                           <div
                             className={`w-4 h-4 rounded-full flex-shrink-0 flex items-center justify-center text-[8px] font-bold z-10 ${
                               log.status === "Match"
-                                ? "bg-[#00ff87] text-black shadow-[0_0_10px_rgba(0,255,135,0.4)]"
+                                ? "bg-[#FF9933] text-black shadow-[0_0_10px_rgba(0,255,135,0.4)]"
                                 : "bg-red-500 text-white shadow-[0_0_10px_rgba(239,68,68,0.4)]"
                             }`}
                           >

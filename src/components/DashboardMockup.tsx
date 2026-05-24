@@ -28,9 +28,9 @@ export default function DashboardMockup() {
       {/* Top Stats Row */}
       <div className="grid grid-cols-3 gap-4">
         {[
-          { label: "Throughput", val: "1.2k/hr", color: "#00ff87" },
+          { label: "Throughput", val: "1.2k/hr", color: "#FF9933" },
           { label: "Active Nodes", val: "142", color: "#ffffff" },
-          { label: "Avg Latency", val: "12ms", color: "#f97316" }
+          { label: "Avg Latency", val: "12ms", color: "#138808" }
         ].map((s, i) => (
           <div key={i} className="holo-glass p-3 rounded-lg border-white/5 flex flex-col gap-1">
             <span className="text-[8px] uppercase tracking-widest text-white/30 font-mono">{s.label}</span>
@@ -42,9 +42,9 @@ export default function DashboardMockup() {
       {/* Main Content Area */}
       <div className="flex-1 holo-glass rounded-xl border-white/10 p-4 flex flex-col gap-4">
         <div className="flex justify-between items-center border-b border-white/5 pb-2">
-          <span className="text-[10px] font-mono text-[#00ff87]">LIVE_TELEMETRY.STREAM</span>
+          <span className="text-[10px] font-mono text-[#FF9933]">LIVE_TELEMETRY.STREAM</span>
           <div className="flex gap-1">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#00ff87] animate-pulse" />
+            <div className="w-1.5 h-1.5 rounded-full bg-[#FF9933] animate-pulse" />
             <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
             <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
           </div>
@@ -53,10 +53,10 @@ export default function DashboardMockup() {
         {/* Animated Bars */}
         <div className="space-y-4 py-2">
           {[
-            { label: "DELHIVERY_NODE", pct: "w-[92%]", color: "bg-[#00ff87]" },
+            { label: "DELHIVERY_NODE", pct: "w-[92%]", color: "bg-[#FF9933]" },
             { label: "BLUEDART_AIR", pct: "w-[78%]", color: "bg-white/60" },
-            { label: "XPRESSBEES_LTL", pct: "w-[85%]", color: "bg-[#00ff87]" },
-            { label: "ECOM_EXPRESS_COD", pct: "w-[64%]", color: "bg-[#f97316]" }
+            { label: "XPRESSBEES_LTL", pct: "w-[85%]", color: "bg-[#138808]" },
+            { label: "ECOM_EXPRESS_COD", pct: "w-[64%]", color: "bg-[#FF9933]" }
           ].map((bar, i) => (
             <div key={i} className="space-y-1.5">
               <div className="flex justify-between text-[8px] font-mono text-white/40 tracking-tighter">
@@ -71,9 +71,9 @@ export default function DashboardMockup() {
         </div>
 
         {/* Console Log Area */}
-        <div className="mt-auto bg-black/40 rounded-lg p-3 font-mono text-[8px] text-[#00ff87]/60 leading-tight">
+        <div className="mt-auto bg-black/40 rounded-lg p-3 font-mono text-[8px] text-[#FF9933]/60 leading-tight">
           <div>[INIT] Synchronizing Carrier_Map_v4...</div>
-          <div>[AUTH] API_NODE_JAIPUR: Verified.</div>
+          <div>[AUTH] BHARAT_NODE_JAIPUR: Verified.</div>
           <div>[EXEC] Routing Order_#42921 via BLUEDART_AIR...</div>
           <div className="animate-pulse">_</div>
         </div>
